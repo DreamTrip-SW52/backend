@@ -7,7 +7,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="DreamTrip\Controllers" />
       <Folder Include="DreamTrip\Domain" />
       <Folder Include="Shared" />
     </ItemGroup>

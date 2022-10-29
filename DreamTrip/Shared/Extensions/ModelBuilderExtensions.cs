@@ -1,6 +1,5 @@
 using Microsoft.EntityFrameworkCore;
 
-// namespace LearningCenter.API.Shared.Extensions;
 namespace DreamTrip.Shared.Extensions;
 
 public static class ModelBuilderExtensions
