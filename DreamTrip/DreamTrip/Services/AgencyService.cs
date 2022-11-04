@@ -42,7 +42,7 @@ public class AgencyService : IAgencyService
         if (existingAgency == null)
             return new AgencyResponse("Agency not found.");
 
-        existingAgency.Name = agency.Name;
+        existingAgency = agency;
 
         try
         {

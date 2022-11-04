@@ -29,20 +29,14 @@ namespace DreamTrip.DreamTrip.Persistence.Contexts
             builder.Entity<Traveler>().Property(p => p.Phone).IsRequired().HasMaxLength(9);
             builder.Entity<Traveler>().Property(p => p.Dni).IsRequired().HasMaxLength(8);
             builder.Entity<Traveler>().Property(p => p.Photo);
-            //
-            // // Relationships
-            // builder.Entity<Category>()
-            //     .HasMany(p => p.Tutorials)
-            //     .WithOne(p => p.Category)
-            //     .HasForeignKey(p => p.CategoryId);
-            //
+            
             builder.Entity<Agency>().ToTable("agencies");
             builder.Entity<Agency>().HasKey(p => p.Id);
             builder.Entity<Agency>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
             builder.Entity<Agency>().Property(p => p.Name).IsRequired().HasMaxLength(50);
-            builder.Entity<Agency>().Property(p => p.Ruc).HasMaxLength(3);
-            builder.Entity<Agency>().Property(p => p.Email).HasMaxLength(50);
-            builder.Entity<Agency>().Property(p => p.Password).HasMaxLength(30);
+            builder.Entity<Agency>().Property(p => p.Ruc).IsRequired().HasMaxLength(11);
+            builder.Entity<Agency>().Property(p => p.Email).IsRequired().HasMaxLength(50);
+            builder.Entity<Agency>().Property(p => p.Password).IsRequired().HasMaxLength(30);
         
         
             // Apply Snake Case Naming Convention

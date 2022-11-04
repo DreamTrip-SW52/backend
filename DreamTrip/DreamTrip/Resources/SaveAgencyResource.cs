@@ -9,8 +9,8 @@ public class SaveAgencyResource
     public string Name { get; set; }
 
     [Required]
-    [MaxLength(3)]
-    public int Ruc { get; set; }
+    [MaxLength(11)]
+    public string Ruc { get; set; }
 
     [Required]
     [MaxLength(50)]

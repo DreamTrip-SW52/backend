@@ -10,7 +10,4 @@ public class Traveler
     public string Phone { get; set; }
     public string Photo { get; set; }
     public string Dni { get; set; }
-    
-    // Relationships
-    // public IList<Tutorial> Tutorials { get; set; } = new List<Tutorial>();
 }
