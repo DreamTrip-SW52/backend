@@ -7,6 +7,6 @@ public interface ITravelerService
 {
     Task<IEnumerable<Traveler>> ListAsync();
     Task<TravelerResponse> SaveAsync(Traveler traveler);
-    Task<TravelerResponse> UpdateAsync(int id, Traveler traveler);
-    Task<TravelerResponse> DeleteAsync(int id);
+    Task<TravelerResponse> UpdateAsync(int travelerId, Traveler traveler);
+    Task<TravelerResponse> DeleteAsync(int travelerId);
 }

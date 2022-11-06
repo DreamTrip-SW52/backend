@@ -9,11 +9,11 @@ public class Location
     // Relationships
 
     // Police Stations
-    public List<PoliceStation> PoliceStations { get; set; }
+    public List<PoliceStation> PoliceStations { get; set; } = new List<PoliceStation>();
     // Health Centers
-    public List<HealthCenter> HealthCenters { get; set; }
+    public List<HealthCenter> HealthCenters { get; set; } = new List<HealthCenters>();
     // Trips Go
-    public List<TripGo> TripsGo { get; set; }
+    public List<TripGo> TripsGo { get; set; } = new List<TripsGo>();
     // Trips Back
-    public List<TripBack> TripsBack { get; set; }
+    public List<TripBack> TripsBack { get; set; } = new List<TripsBack>();
 }
