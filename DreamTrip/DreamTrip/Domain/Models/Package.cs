@@ -20,9 +20,32 @@ public class Package
     // Location
     public int LocationId { get; set; }
     public Location Location { get; set; }
+    
+    // Accommodation
+    public Accommodation Accommodation { get; set; }
+    // Rent Car
+    public RentCar RentCar { get; set; }
+    // Tour
+    public Tour Tour { get; set; }
 
     // Comments
     public List<Review> Reviews { get; set; }
     // Purchased Packages
     public List<PurchasedPackage> PurchasedPackages { get; set; }
 }
+
+
+//Student -> Package
+//StudentAddress -> Accommodation
+
+//// Accommodation
+//builder.Entity<Accommodation>()
+//	.HasOne<Package>(p => p.Package)
+//	.WithOne(p => p.Accommodation)
+//	.HasForeignKey<Accommodation>(p => p.PackageId);
+
+//// Package
+//builder.Entity<Package>()
+//	.HasOne<Accommodation>(p => p.Accommodation)
+//	.WithOne(p => p.Package)
+//	.HasForeignKey<Accommodation>(p => p.PackageId);

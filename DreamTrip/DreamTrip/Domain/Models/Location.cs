@@ -8,12 +8,14 @@ public class Location
 
     // Relationships
 
+    // Packages
+    public List<Package> Packages { get; set; } = new List<Package>();
     // Police Stations
     public List<PoliceStation> PoliceStations { get; set; } = new List<PoliceStation>();
     // Health Centers
-    public List<HealthCenter> HealthCenters { get; set; } = new List<HealthCenters>();
+    public List<HealthCenter> HealthCenters { get; set; } = new List<HealthCenter>();
     // Trips Go
-    public List<TripGo> TripsGo { get; set; } = new List<TripsGo>();
+    public List<TripGo> TripsGo { get; set; } = new List<TripGo>();
     // Trips Back
-    public List<TripBack> TripsBack { get; set; } = new List<TripsBack>();
+    public List<TripBack> TripsBack { get; set; } = new List<TripBack>();
 }

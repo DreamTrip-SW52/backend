@@ -12,7 +12,7 @@ public class Accommodation
     // Relationship
     // Package
     public int PackageId { get; set; }
-    public Package Package{ get; set; }
+    public Package Package { get; set; }
     // Services per Accommodation
     List<ServicesPerAccommodation> ServicesPerAccommodations { get; set; }
 
