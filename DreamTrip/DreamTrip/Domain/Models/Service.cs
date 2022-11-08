@@ -6,7 +6,7 @@ public class Service
     public string Name { get; set; }
 
     // Relationship
-    
+
     // Services Per Accomodation
-    List<ServicesPerAccommodation> ServicesPerAccommodations { get; set; }
+    public List<ServicesPerAccommodation> ServicesPerAccommodations { get; set; } = new List<ServicesPerAccommodation>();
 }

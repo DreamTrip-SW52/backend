@@ -14,6 +14,6 @@ public class Accommodation
     public int PackageId { get; set; }
     public Package Package { get; set; }
     // Services per Accommodation
-    List<ServicesPerAccommodation> ServicesPerAccommodations { get; set; }
+    public List<ServicesPerAccommodation> ServicesPerAccommodations { get; set; } = new List<ServicesPerAccommodation>();
 
 }

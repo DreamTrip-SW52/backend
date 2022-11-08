@@ -9,4 +9,9 @@ public class TripGo
     // Location
     public int LocationId { get; set; }
     public Location Location { get; set; }
+    
+    // One Way
+    public OneWay OneWay { get; set; }
+    // Round Trip
+    public RoundTrip RoundTrip { get; set; }
 }

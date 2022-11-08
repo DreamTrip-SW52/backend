@@ -9,4 +9,7 @@ public class TripBack
     // Location
     public int LocationId { get; set; }
     public Location Location { get; set; }
+
+    // Round Trip
+    public RoundTrip RoundTrip { get; set; }
 }

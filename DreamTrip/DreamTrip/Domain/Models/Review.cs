@@ -15,4 +15,4 @@ public class Review
     public int TravelerId { get; set; }
     public Traveler Traveler { get; set; }
 }
-}
+

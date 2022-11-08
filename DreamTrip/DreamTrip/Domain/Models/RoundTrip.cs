@@ -3,7 +3,7 @@
 public class RoundTrip
 {
     public int Id { get; set; }
-    public DateTime DepartDate { get; set; }
+    public DateTime DepartureDate { get; set; }
     public DateTime ReturnDate { get; set; }
     public decimal Price { get; set; }
 
