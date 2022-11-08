@@ -30,10 +30,70 @@ builder.Services.AddRouting(options => options.LowercaseUrls = true);
 
 // Dependency Injection Configuration
 
-builder.Services.AddScoped<ITravelerRepository, TravelerRepository>();
-builder.Services.AddScoped<ITravelerService, TravelerService>();
+// accommodation
+builder.Services.AddScoped<IAccommodationRepository, AccommodationRepository>();
+builder.Services.AddScoped<IAccommodationService, AccommodationService>();
+// agency
 builder.Services.AddScoped<IAgencyRepository, AgencyRepository>();
 builder.Services.AddScoped<IAgencyService, AgencyService>();
+// agencyCard
+builder.Services.AddScoped<IAgencyCardRepository, AgencyCardRepository>();
+builder.Services.AddScoped<IAgencyCardService, AgencyCardService>();
+// healthCenter
+builder.Services.AddScoped<IHealthCenterRepository, HealthCenterRepository>();
+builder.Services.AddScoped<IHealthCenterService, HealthCenterService>();
+// location
+builder.Services.AddScoped<ILocationRepository, LocationRepository>();
+builder.Services.AddScoped<ILocationService, LocationService>();
+// oneway
+builder.Services.AddScoped<IOneWayRepository, OneWayRepository>();
+builder.Services.AddScoped<IOneWayService, OneWayService>();
+// package
+builder.Services.AddScoped<IPackageRepository, PackageRepository>();
+builder.Services.AddScoped<IPackageService, PackageService>();
+// policeStation
+builder.Services.AddScoped<IPoliceStationRepository, PoliceStationRepository>();
+builder.Services.AddScoped<IPoliceStationService, PoliceStationService>();
+// purchasedPackage
+builder.Services.AddScoped<IPurchasedPackageRepository, PurchasedPackageRepository>();
+builder.Services.AddScoped<IPurchasedPackageService, PurchasedPackageService>();
+// rentCar
+builder.Services.AddScoped<IRentCarRepository, RentCarRepository>();
+builder.Services.AddScoped<IRentCarService, RentCarService>();
+// review
+builder.Services.AddScoped<IReviewRepository, ReviewRepository>();
+builder.Services.AddScoped<IReviewService, ReviewService>();
+// roundTrip
+builder.Services.AddScoped<IRoundTripRepository, RoundTripRepository>();
+builder.Services.AddScoped<IRoundTripService, RoundTripService>();
+// service
+builder.Services.AddScoped<IServiceRepository, ServiceRepository>();
+builder.Services.AddScoped<IServiceService, ServiceService>();
+// servicesPerAccommodation
+builder.Services.AddScoped<IServicesPerAccommodationRepository, ServicesPerAccommodationRepository>();
+builder.Services.AddScoped<IServicesPerAccommodationService, ServicesPerAccommodationService>();
+// tour
+builder.Services.AddScoped<ITourRepository, TourRepository>();
+builder.Services.AddScoped<ITourService, TourService>();
+// transport
+builder.Services.AddScoped<ITransportRepository, TransportRepository>();
+builder.Services.AddScoped<ITransportService, TransportService>();
+// transportClass
+builder.Services.AddScoped<ITransportClassRepository, TransportClassRepository>();
+builder.Services.AddScoped<ITransportClassService, TransportClassService>();
+// traveler
+builder.Services.AddScoped<ITravelerRepository, TravelerRepository>();
+builder.Services.AddScoped<ITravelerService, TravelerService>();
+//travelerCard
+builder.Services.AddScoped<ITravelerCardRepository, TravelerCardRepository>();
+builder.Services.AddScoped<ITravelerCardService, TravelerCardService>();
+// tripBack
+builder.Services.AddScoped<ITripBackRepository, TripBackRepository>();
+builder.Services.AddScoped<ITripBackService, TripBackService>();
+// tripGo
+builder.Services.AddScoped<ITripGoRepository, TripGoRepository>();
+builder.Services.AddScoped<ITripGoService, TripGoService>();
+
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 // AutoMapper Configuration

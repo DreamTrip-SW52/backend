@@ -2,7 +2,7 @@
 
 namespace DreamTrip.DreamTrip.Domain.Repositories;
 
-public interface IServicesPerAccommodationRepositoryRepository
+public interface IServicesPerAccommodationRepository
 {
     Task<IEnumerable<ServicesPerAccommodation>> ListAsync();
     Task AddAsync(ServicesPerAccommodation servicesPerAccommodation);

@@ -1,5 +1,3 @@
-using DreamTrip.DreamTrip.Domain.Models;
-
 namespace DreamTrip.DreamTrip.Resources;
 
 public class TravelerResource

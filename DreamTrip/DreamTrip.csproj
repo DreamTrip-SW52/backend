@@ -7,10 +7,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Compile Remove="DreamTrip\Domain\Models\Tour.cs" />
-    </ItemGroup>
-
-    <ItemGroup>
       <None Remove="DreamTrip\Domain\Models\NewFile.txt" />
       <None Remove="DreamTrip\Domain\Models\TransportClass" />
       <None Remove="DreamTrip\Domain\Models\TripGo" />

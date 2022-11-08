@@ -47,7 +47,14 @@ public class TravelerService : ITravelerService
         if (existingTraveler == null)
             return new TravelerResponse("Traveler not found.");
 
-        existingTraveler = traveler;
+        // create a new reference of the traveler to update
+        existingTraveler.Name = traveler.Name;    
+        existingTraveler.Lastname = traveler.Lastname;    
+        existingTraveler.Email = traveler.Email;    
+        existingTraveler.Password = traveler.Password;    
+        existingTraveler.Phone = traveler.Phone;
+        existingTraveler.Photo = traveler.Photo;
+        existingTraveler.Dni = traveler.Dni;
 
         try
         {

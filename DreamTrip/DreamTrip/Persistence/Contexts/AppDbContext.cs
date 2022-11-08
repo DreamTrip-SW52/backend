@@ -10,8 +10,8 @@ namespace DreamTrip.DreamTrip.Persistence.Contexts
         public DbSet<Accommodation> Accommodations { get; set; }
         public DbSet<HealthCenter> HealthCenters { get; set; }
         public DbSet<Location> Locations { get; set; }
-        public DbSet<Location> OneWays { get; set; }
-        public DbSet<Location> Packages { get; set; }
+        public DbSet<OneWay> OneWays { get; set; }
+        public DbSet<Package> Packages { get; set; }
         public DbSet<PoliceStation> PoliceStations { get; set; }
         public DbSet<PurchasedPackage> PurchasedPackages { get; set; }
         public DbSet<RentCar> RentCars { get; set; }
