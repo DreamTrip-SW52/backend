@@ -11,9 +11,12 @@ public class Package
     public int Price { get; set; }
     public string Image { get; set; }
     public bool Custom { get; set; }
+    public int Views { get; set; }
+    public int Sales { get; set; }
+    public string Category { get; set; }
 
     // Relationships
-    
+
     // Travel Agency
     public int AgencyId { get; set; }
     public Agency Agency { get; set; }

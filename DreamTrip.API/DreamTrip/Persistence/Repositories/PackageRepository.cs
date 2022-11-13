@@ -26,6 +26,26 @@ public class PackageRepository : BaseRepository, IPackageRepository
         return await _context.Packages.FindAsync(id);
     }
 
+    public async Task<IEnumerable<Package>> FindByAgencyId(int agencyId)
+    {
+        return await _context.Packages.Where(p => p.AgencyId == agencyId).ToListAsync();
+    }
+
+    public async Task<IEnumerable<Package>> FindByPrice(int price)
+    {
+        return await _context.Packages.Where(p => p.Price <= price).ToListAsync();
+    }
+
+    public async Task<IEnumerable<Package>> FindByDuration(int duration)
+    {
+        return await _context.Packages.Where(p => p.Duration <= duration).ToListAsync();
+    }
+
+    public async Task<IEnumerable<Package>> FindByCategory(string category)
+    {
+        return await _context.Packages.Where(p => p.Category == category).ToListAsync();
+    }
+
     public void Update(Package package)
     {
         _context.Packages.Update(package);

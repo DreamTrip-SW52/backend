@@ -26,6 +26,11 @@ public class AgencyRepository : BaseRepository, IAgencyRepository
         return await _context.Agencies.FindAsync(id);
     }
 
+    public async Task<Agency> FindByEmailAndPassword(string email, string password)
+    {
+        return await _context.Agencies.FirstOrDefaultAsync(a => a.Email == email && a.Password == password);
+    }
+
     public void Update(Agency agency)
     {
         _context.Agencies.Update(agency);

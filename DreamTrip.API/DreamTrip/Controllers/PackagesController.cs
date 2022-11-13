@@ -29,6 +29,51 @@ public class PackageController : ControllerBase
         return resources;
     }
 
+    [HttpGet("{id}")]
+    public async Task<PackageResource> GetByIdAsync(int id)
+    {
+        var package = await _packageService.FindByIdAsync(id);
+        var resource = _mapper.Map<Package, PackageResource>(package);
+        
+        return resource;
+    }
+    
+    [HttpGet("agencyId/{agencyId}")]
+    public async Task<IEnumerable<PackageResource>> GetByAgencyIdAsync(int agencyId)
+    {
+        var packages = await _packageService.FindByAgencyIdAsync(agencyId);
+        var resources = _mapper.Map<IEnumerable<Package>, IEnumerable<PackageResource>>(packages);
+
+        return resources;
+    }
+    
+    [HttpGet("price/{price}")]
+    public async Task<IEnumerable<PackageResource>> GetByPriceAsync(int price)
+    {
+        var packages = await _packageService.FindByPriceAsync(price);
+        var resources = _mapper.Map<IEnumerable<Package>, IEnumerable<PackageResource>>(packages);
+
+        return resources;
+    }
+    
+    [HttpGet("duration/{duration}")]
+    public async Task<IEnumerable<PackageResource>> GetByDurationAsync(int duration)
+    {
+        var packages = await _packageService.FindByDurationAsync(duration);
+        var resources = _mapper.Map<IEnumerable<Package>, IEnumerable<PackageResource>>(packages);
+
+        return resources;
+    }
+    
+    [HttpGet("category/{category}")]
+    public async Task<IEnumerable<PackageResource>> GetByCategoryAsync(string category)
+    {
+        var packages = await _packageService.FindByCategoryAsync(category);
+        var resources = _mapper.Map<IEnumerable<Package>, IEnumerable<PackageResource>>(packages);
+
+        return resources;
+    }
+
     [HttpPost]
     public async Task<IActionResult> PostAsync([FromBody] SavePackageResource resource)
     {

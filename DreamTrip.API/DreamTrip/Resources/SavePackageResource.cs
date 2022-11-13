@@ -31,6 +31,16 @@ public class SavePackageResource
     public bool Custom { get; set; }
 
     [Required]
+    public int Views { get; set; }
+
+    [Required]
+    public int Sales { get; set; }
+
+    [Required]
+    [MaxLength(40)]
+    public string Category { get; set; }
+
+    [Required]
     public int AgencyId { get; set; }
 
     [Required]

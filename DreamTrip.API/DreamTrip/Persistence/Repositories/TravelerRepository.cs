@@ -25,7 +25,12 @@ public class TravelerRepository : BaseRepository, ITravelerRepository
     {
         return await _context.Travelers.FindAsync(id);
     }
-
+    
+    public async Task<Traveler> FindByEmailAndPassword(string email, string password)
+    {
+        return await _context.Travelers.FirstOrDefaultAsync(t => t.Email == email && t.Password == password);
+    }
+    
     public void Update(Traveler traveler)
     {
         _context.Travelers.Update(traveler);

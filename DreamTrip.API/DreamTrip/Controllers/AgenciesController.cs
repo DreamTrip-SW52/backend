@@ -28,6 +28,22 @@ public class AgenciesController : ControllerBase
 
         return resources;
     }
+    
+    [HttpGet ("{id}")]
+    public async Task<AgencyResource> GetByIdAsync(int id)
+    {
+        var agency = await _agencyService.FindByIdAsync(id);
+        var agencyResource = _mapper.Map<Agency, AgencyResource>(agency);
+        return agencyResource;
+    }
+    
+    [HttpGet("EmailAndPassword/{email}/{password}")]
+    public async Task<AgencyResource> GetByEmailAndPasswordAsync(string email, string password)
+    {
+        var agency = await _agencyService.FindByEmailAndPasswordAsync(email, password);
+        var agencyResource = _mapper.Map<Agency, AgencyResource>(agency);
+        return agencyResource;
+    }
 
     [HttpPost]
     public async Task<IActionResult> PostAsync([FromBody] SaveAgencyResource resource)

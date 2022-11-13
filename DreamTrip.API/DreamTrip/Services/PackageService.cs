@@ -21,9 +21,29 @@ public class PackageService : IPackageService
         return await _packageRepository.ListAsync();
     }
 
-    public async Task<Package> ListByPackageIdAsync(int packageId)
+    public async Task<Package> FindByIdAsync(int id)
     {
-        return await _packageRepository.FindByIdAsync(packageId);
+        return await _packageRepository.FindByIdAsync(id);
+    }
+    
+    public async Task<IEnumerable<Package>> FindByAgencyIdAsync(int agencyId)
+    {
+        return await _packageRepository.FindByAgencyId(agencyId);
+    }
+    
+    public async Task<IEnumerable<Package>> FindByPriceAsync(int price) 
+    {
+        return await _packageRepository.FindByPrice(price);
+    }
+    
+    public async Task<IEnumerable<Package>> FindByDurationAsync(int duration)
+    {
+        return await _packageRepository.FindByDuration(duration);
+    }
+    
+    public async Task<IEnumerable<Package>> FindByCategoryAsync(string category)
+    {
+        return await _packageRepository.FindByCategory(category);
     }
 
     public async Task<PackageResponse> SaveAsync(Package package)
@@ -48,16 +68,18 @@ public class PackageService : IPackageService
             return new PackageResponse("Package not found.");
 
         existingPackage.Name = package.Name;
-				existingPackage.Description = package.Description;
-				existingPackage.LocationAddress = package.LocationAddress;
-				existingPackage.Duration = package.Duration;
-				existingPackage.Capacity = package.Capacity;
-				existingPackage.Price = package.Price;
-				existingPackage.Image=  package.Image;
-				existingPackage.Custom = package.Custom;
-				existingPackage.AgencyId= package.AgencyId;
-				existingPackage.LocationId = package.LocationId;
-
+		existingPackage.Description = package.Description;
+		existingPackage.LocationAddress = package.LocationAddress;
+		existingPackage.Duration = package.Duration;
+		existingPackage.Capacity = package.Capacity;
+		existingPackage.Price = package.Price;
+		existingPackage.Image=  package.Image;
+		existingPackage.Custom = package.Custom;
+		existingPackage.Views = package.Views;
+		existingPackage.Sales = package.Sales;
+        existingPackage.Category = package.Category;
+        existingPackage.AgencyId= package.AgencyId;
+		existingPackage.LocationId = package.LocationId;
 
         try
         {

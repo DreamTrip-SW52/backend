@@ -1,4 +1,6 @@
-﻿namespace DreamTrip.API.DreamTrip.Resources;
+﻿using Microsoft.Extensions.Primitives;
+
+namespace DreamTrip.API.DreamTrip.Resources;
 
 public class PackageResource
 {
@@ -13,4 +15,7 @@ public class PackageResource
     public bool Custom { get; set; }
     public int AgencyId { get; set; }
     public int LocationId { get; set; }
+    public int Views { get; set; }
+    public int Sales { get; set; }
+    public string Category { get; set; }
 }

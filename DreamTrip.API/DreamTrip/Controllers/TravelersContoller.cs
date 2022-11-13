@@ -28,6 +28,22 @@ public class TravelersController : ControllerBase
 
         return resources;
     }
+    
+    [HttpGet ("{id}")]
+    public async Task<TravelerResource> GetByIdAsync(int id)
+    {
+        var traveler = await _travelerService.FindByIdAsync(id);
+        var travelerResource = _mapper.Map<Traveler, TravelerResource>(traveler);
+        return travelerResource;
+    }
+    
+    [HttpGet("EmailAndPassword/{email}/{password}")]
+    public async Task<TravelerResource> GetByEmailAndPasswordAsync(string email, string password)
+    {
+        var traveler = await _travelerService.FindByEmailAndPasswordAsync(email, password);
+        var travelerResource = _mapper.Map<Traveler, TravelerResource>(traveler);
+        return travelerResource;
+    }
 
     [HttpPost]
     public async Task<IActionResult> PostAsync([FromBody] SaveTravelerResource resource)

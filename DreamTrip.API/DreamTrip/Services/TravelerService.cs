@@ -21,9 +21,14 @@ public class TravelerService : ITravelerService
         return await _travelerRepository.ListAsync();
     }
 
-    public async Task<Traveler> ListByTravelerIdAsync(int travelerId)
+    public async Task<Traveler> FindByIdAsync(int id)
     {
-        return await _travelerRepository.FindByIdAsync(travelerId);
+        return await _travelerRepository.FindByIdAsync(id);
+    }
+    
+    public async Task<Traveler> FindByEmailAndPasswordAsync(string email, string password)
+    {
+        return await _travelerRepository.FindByEmailAndPassword(email, password);
     }
 
     public async Task<TravelerResponse> SaveAsync(Traveler traveler)

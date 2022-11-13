@@ -20,6 +20,16 @@ public class AgencyService : IAgencyService
     {
         return await _agencyRepository.ListAsync();
     }
+    
+    public async Task<Agency> FindByIdAsync(int id)
+    {
+        return await _agencyRepository.FindByIdAsync(id);
+    }
+    
+    public async Task<Agency> FindByEmailAndPasswordAsync(string email, string password)
+    {
+        return await _agencyRepository.FindByEmailAndPassword(email, password);
+    }
 
     public async Task<AgencyResponse> SaveAsync(Agency agency)
     {
@@ -43,9 +53,9 @@ public class AgencyService : IAgencyService
             return new AgencyResponse("Agency not found.");
 
         existingAgency.Name = agency.Name;
-				existingAgency.Ruc = agency.Ruc;
-				existingAgency.Email = agency.Email;
-				existingAgency.Password = agency.Password;
+		existingAgency.Ruc = agency.Ruc;
+		existingAgency.Email = agency.Email;
+		existingAgency.Password = agency.Password;
 
         try
         {
