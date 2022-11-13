@@ -29,6 +29,14 @@ public class TravelerCardsController : ControllerBase
         return resources;
     }
 
+    [HttpGet("travelerId/{travelerId}")]
+    public async Task<IEnumerable<TravelerCardResource>> GetByTravelerId(int travelerId)
+    {
+        var travelerCards = await _tavelerCardService.FindByTravelerIdAsync(travelerId);
+        var resources = _mapper.Map<IEnumerable<TravelerCard>, IEnumerable<TravelerCardResource>>(travelerCards);
+        return resources;
+    }
+
     [HttpPost]
     public async Task<IActionResult> PostAsync([FromBody] SaveTravelerCardResource resource)
     {

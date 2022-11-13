@@ -21,11 +21,16 @@ public class ReviewService : IReviewService
         return await _reviewRepository.ListAsync();
     }
 
-    public async Task<Review> ListByReviewIdAsync(int reviewId)
+    public async Task<Review> FindByTravelerIdAsync(int travelerId)
     {
-        return await _reviewRepository.FindByIdAsync(reviewId);
+        return await _reviewRepository.FindByTravelerId(travelerId);
     }
 
+    public async Task<IEnumerable<Review>> FindByPackageIdAsync(int packageId)
+    {
+        return await _reviewRepository.FindByPackageId(packageId);
+    }
+    
     public async Task<ReviewResponse> SaveAsync(Review review)
     {
         try

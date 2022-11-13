@@ -20,10 +20,10 @@ public class AgencyCardService : IAgencyCardService
     {
         return await _agencyCardRepository.ListAsync();
     }
-
-    public async Task<AgencyCard> ListByAgencyCardIdAsync(int agencyCardId)
+    
+    public async Task<IEnumerable<AgencyCard>> FindByAgencyIdAsync(int agencyId)
     {
-        return await _agencyCardRepository.FindByIdAsync(agencyCardId);
+        return await _agencyCardRepository.FindByAgencyId(agencyId);
     }
 
     public async Task<AgencyCardResponse> SaveAsync(AgencyCard agencyCard)

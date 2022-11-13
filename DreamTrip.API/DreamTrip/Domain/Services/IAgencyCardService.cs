@@ -6,6 +6,7 @@ namespace DreamTrip.API.DreamTrip.Domain.Services;
 public interface IAgencyCardService
 {
     Task<IEnumerable<AgencyCard>> ListAsync();
+    Task<IEnumerable<AgencyCard>> FindByAgencyIdAsync(int agencyId);
     Task<AgencyCardResponse> SaveAsync(AgencyCard agencyCard);
     Task<AgencyCardResponse> UpdateAsync(int agencyCardId, AgencyCard agencyCard);
     Task<AgencyCardResponse> DeleteAsync(int agencyCardId);

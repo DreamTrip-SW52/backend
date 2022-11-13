@@ -15,15 +15,25 @@ public class ReviewRepository : BaseRepository, IReviewRepository
     {
         return await _context.Reviews.ToListAsync();
     }
+    
+    public async Task<Review> FindByIdAsync(int id)
+    {
+        return await _context.Reviews.FindAsync(id);
+    }
+    
+    public async Task<Review> FindByTravelerId(int travelerId)
+    {
+        return await _context.Reviews.FirstOrDefaultAsync(r => r.TravelerId == travelerId);
+    }
+
+    public async Task<IEnumerable<Review>> FindByPackageId(int packageId)
+    {
+        return await _context.Reviews.Where(r => r.PackageId == packageId).ToListAsync();
+    }
 
     public async Task AddAsync(Review reviews)
     {
         await _context.Reviews.AddAsync(reviews);
-    }
-
-    public async Task<Review> FindByIdAsync(int id)
-    {
-        return await _context.Reviews.FindAsync(id);
     }
 
     public void Update(Review reviews)

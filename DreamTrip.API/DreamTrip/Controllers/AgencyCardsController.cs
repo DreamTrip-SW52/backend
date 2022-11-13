@@ -28,6 +28,15 @@ public class AgencyCardController : ControllerBase
 
         return resources;
     }
+    
+    [HttpGet ("agencyId/{agencyId}")]
+    public async Task<IEnumerable<AgencyCardResource>> GetByAgencyId(int agencyId)
+    {
+        var agencyCards = await _agencyCardService.FindByAgencyIdAsync(agencyId);
+        var resources = _mapper.Map<IEnumerable<AgencyCard>, IEnumerable<AgencyCardResource>>(agencyCards);
+
+        return resources;
+    }
 
     [HttpPost]
     public async Task<IActionResult> PostAsync([FromBody] SaveAgencyCardResource resource)

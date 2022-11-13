@@ -15,15 +15,20 @@ public class AgencyCardRepository : BaseRepository, IAgencyCardRepository
     {
         return await _context.AgencyCards.ToListAsync();
     }
+    
+    public async Task<AgencyCard> FindByIdAsync(int id)
+    {
+        return await _context.AgencyCards.FindAsync(id);
+    }
+    
+    public async Task<IEnumerable<AgencyCard>> FindByAgencyId(int agencyId)
+    {
+        return await _context.AgencyCards.Where(ac => ac.AgencyId == agencyId).ToListAsync();
+    }
 
     public async Task AddAsync(AgencyCard agencyCard)
     {
         await _context.AgencyCards.AddAsync(agencyCard);
-    }
-
-    public async Task<AgencyCard> FindByIdAsync(int id)
-    {
-        return await _context.AgencyCards.FindAsync(id);
     }
 
     public void Update(AgencyCard agencyCard)

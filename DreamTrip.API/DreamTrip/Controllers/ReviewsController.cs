@@ -28,6 +28,24 @@ public class ReviewsController : ControllerBase
 
         return resources;
     }
+    
+    [HttpGet ("travelerId/{travelerId}")]
+    public async Task<ReviewResource> GetByTravelerIdAsync(int travelerId)
+    {
+        var reviews = await _reviewService.FindByTravelerIdAsync(travelerId);
+        var resource = _mapper.Map<Review, ReviewResource>(reviews);
+
+        return resource;
+    }
+    
+    [HttpGet ("packageId/{packageId}")]
+    public async Task<IEnumerable<ReviewResource>> GetByPackageIdAsync(int packageId)
+    {
+        var reviews = await _reviewService.FindByPackageIdAsync(packageId);
+        var resources = _mapper.Map<IEnumerable<Review>, IEnumerable<ReviewResource>>(reviews);
+
+        return resources;
+    }
 
     [HttpPost]
     public async Task<IActionResult> PostAsync([FromBody] SaveReviewResource resource)

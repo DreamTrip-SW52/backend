@@ -20,12 +20,11 @@ public class TravelerCardService : ITravelerCardService
     {
         return await _travelerCardRepository.ListAsync();
     }
-
-    public async Task<TravelerCard> ListByTravelerCardIdAsync(int travelerCardId)
+    
+    public async Task<IEnumerable<TravelerCard>> FindByTravelerIdAsync(int travelerId)
     {
-        return await _travelerCardRepository.FindByIdAsync(travelerCardId);
+        return await _travelerCardRepository.FindByTravelerId(travelerId);
     }
-
     public async Task<TravelerCardResponse> SaveAsync(TravelerCard travelerCard)
     {
         try
