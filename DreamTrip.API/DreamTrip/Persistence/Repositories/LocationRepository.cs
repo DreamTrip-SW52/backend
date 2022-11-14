@@ -16,14 +16,19 @@ public class LocationRepository : BaseRepository, ILocationRepository
         return await _context.Locations.ToListAsync();
     }
 
-    public async Task AddAsync(Location location)
-    {
-        await _context.Locations.AddAsync(location);
-    }
-
     public async Task<Location> FindByIdAsync(int id)
     {
         return await _context.Locations.FindAsync(id);
+    }
+    
+    public async Task<Location> FindByDepartment(string department)
+    {
+        return await _context.Locations.FirstOrDefaultAsync(x => x.Department == department);
+    }
+    
+    public async Task AddAsync(Location location)
+    {
+        await _context.Locations.AddAsync(location);
     }
 
     public void Update(Location location)

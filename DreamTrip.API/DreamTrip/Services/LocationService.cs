@@ -21,9 +21,9 @@ public class LocationService : ILocationService
         return await _locationRepository.ListAsync();
     }
 
-    public async Task<Location> ListByLocationIdAsync(int locationId)
+    public async Task<Location> FindByDepartmentAsync(string department)
     {
-        return await _locationRepository.FindByIdAsync(locationId);
+        return await _locationRepository.FindByDepartment(department);
     }
 
     public async Task<LocationResponse> SaveAsync(Location location)
