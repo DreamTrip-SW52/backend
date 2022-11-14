@@ -29,6 +29,15 @@ public class ToursController : ControllerBase
         return resources;
     }
 
+    [HttpGet("packageId/{packageId}")]
+    public async Task<TourResource> GetByPackageId(int packageId)
+    {
+        var tour = await _tourService.FindByPackageIdAsync(packageId);
+        var resource = _mapper.Map<Tour, TourResource>(tour);
+
+        return resource;
+    }
+
     [HttpPost]
     public async Task<IActionResult> PostAsync([FromBody] SaveTourResource resource)
     {

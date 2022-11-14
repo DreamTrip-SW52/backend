@@ -21,9 +21,9 @@ public class OneWayService : IOneWayService
         return await _oneWayRepository.ListAsync();
     }
 
-    public async Task<OneWay> ListByOneWayIdAsync(int oneWayId)
+    public async Task<OneWay> FindByPackageIdAsync(int packageId)
     {
-        return await _oneWayRepository.FindByIdAsync(oneWayId);
+        return await _oneWayRepository.FindByPackageId(packageId);
     }
 
     public async Task<OneWayResponse> SaveAsync(OneWay oneWay)

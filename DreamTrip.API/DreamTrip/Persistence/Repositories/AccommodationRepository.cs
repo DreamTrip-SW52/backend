@@ -15,15 +15,20 @@ public class AccommodationRepository : BaseRepository, IAccommodationRepository
     {
         return await _context.Accommodations.ToListAsync();
     }
+    
+    public async Task<Accommodation> FindByIdAsync(int id)
+    {
+        return await _context.Accommodations.FindAsync(id);
+    }
+
+    public async Task<Accommodation> FindByPackageId(int packageId)
+    {
+        return await  _context.Accommodations.FirstOrDefaultAsync(x => x.PackageId == packageId);
+    }
 
     public async Task AddAsync(Accommodation accommodation)
     {
         await _context.Accommodations.AddAsync(accommodation);
-    }
-
-    public async Task<Accommodation> FindByIdAsync(int id)
-    {
-        return await _context.Accommodations.FindAsync(id);
     }
 
     public void Update(Accommodation accommodation)

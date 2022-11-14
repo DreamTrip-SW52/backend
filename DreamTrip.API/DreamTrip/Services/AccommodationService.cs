@@ -21,9 +21,9 @@ public class AccommodationService : IAccommodationService
         return await _accommodationRepository.ListAsync();
     }
 
-    public async Task<Accommodation> ListByAccommodationIdAsync(int accommodationId)
+    public async Task<Accommodation> FindByPackageIdAsync(int packageId)
     {
-        return await _accommodationRepository.FindByIdAsync(accommodationId);
+        return await _accommodationRepository.FindByPackageId(packageId);
     }
 
     public async Task<AccommodationResponse> SaveAsync(Accommodation accommodation)

@@ -21,9 +21,9 @@ public class TourService : ITourService
         return await _tourRepository.ListAsync();
     }
 
-    public async Task<Tour> ListByTourIdAsync(int tourId)
+    public async Task<Tour> FindByPackageIdAsync(int packageId)
     {
-        return await _tourRepository.FindByIdAsync(tourId);
+        return await _tourRepository.FindByPackageId(packageId);
     }
 
     public async Task<TourResponse> SaveAsync(Tour tour)

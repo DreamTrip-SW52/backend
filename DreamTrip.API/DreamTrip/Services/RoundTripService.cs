@@ -21,9 +21,9 @@ public class RoundTripService : IRoundTripService
         return await _roundTripRepository.ListAsync();
     }
 
-    public async Task<RoundTrip> ListByRoundTripIdAsync(int roundTripId)
+    public async Task<RoundTrip> FindByPackageIdAsync(int packageId)
     {
-        return await _roundTripRepository.FindByIdAsync(roundTripId);
+        return await _roundTripRepository.FindByPackageId(packageId);
     }
 
     public async Task<RoundTripResponse> SaveAsync(RoundTrip roundTrip)

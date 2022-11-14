@@ -16,14 +16,14 @@ public class TransportRepository : BaseRepository, ITransportRepository
         return await _context.Transports.ToListAsync();
     }
 
-    public async Task AddAsync(Transport transport)
-    {
-        await _context.Transports.AddAsync(transport);
-    }
-
     public async Task<Transport> FindByIdAsync(int id)
     {
         return await _context.Transports.FindAsync(id);
+    }
+
+    public async Task AddAsync(Transport transport)
+    {
+        await _context.Transports.AddAsync(transport);
     }
 
     public void Update(Transport transport)

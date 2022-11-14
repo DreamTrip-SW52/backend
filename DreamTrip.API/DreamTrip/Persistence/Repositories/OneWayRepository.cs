@@ -16,14 +16,19 @@ public class OneWayRepository : BaseRepository, IOneWayRepository
         return await _context.OneWays.ToListAsync();
     }
 
-    public async Task AddAsync(OneWay oneWay)
-    {
-        await _context.OneWays.AddAsync(oneWay);
-    }
-
     public async Task<OneWay> FindByIdAsync(int id)
     {
         return await _context.OneWays.FindAsync(id);
+    }
+
+    public async Task<OneWay> FindByPackageId(int packageId)
+    {
+        return await _context.OneWays.FirstOrDefaultAsync(ow => ow.PackageId == packageId);
+    }
+    
+    public async Task AddAsync(OneWay oneWay)
+    {
+        await _context.OneWays.AddAsync(oneWay);
     }
 
     public void Update(OneWay oneWay)

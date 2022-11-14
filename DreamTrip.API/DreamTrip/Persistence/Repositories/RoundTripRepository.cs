@@ -15,15 +15,20 @@ public class RoundTripRepository : BaseRepository, IRoundTripRepository
     {
         return await _context.RoundTrips.ToListAsync();
     }
+    
+    public async Task<RoundTrip> FindByIdAsync(int id)
+    {
+        return await _context.RoundTrips.FindAsync(id);
+    }
+
+    public async Task<RoundTrip> FindByPackageId(int packageId)
+    {
+        return await _context.RoundTrips.FirstOrDefaultAsync(x => x.PackageId == packageId);
+    }
 
     public async Task AddAsync(RoundTrip roundTrip)
     {
         await _context.RoundTrips.AddAsync(roundTrip);
-    }
-
-    public async Task<RoundTrip> FindByIdAsync(int id)
-    {
-        return await _context.RoundTrips.FindAsync(id);
     }
 
     public void Update(RoundTrip roundTrip)

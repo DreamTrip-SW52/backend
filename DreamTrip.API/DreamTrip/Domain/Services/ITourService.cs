@@ -6,6 +6,7 @@ namespace DreamTrip.API.DreamTrip.Domain.Services;
 public interface ITourService
 {
     Task<IEnumerable<Tour>> ListAsync();
+    Task<Tour> FindByPackageIdAsync(int packageId);
     Task<TourResponse> SaveAsync(Tour tour);
     Task<TourResponse> UpdateAsync(int tourId, Tour tour);
     Task<TourResponse> DeleteAsync(int tourId);

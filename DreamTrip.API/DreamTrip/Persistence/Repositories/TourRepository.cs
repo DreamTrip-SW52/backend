@@ -16,14 +16,19 @@ public class TourRepository : BaseRepository, ITourRepository
         return await _context.Tours.ToListAsync();
     }
 
-    public async Task AddAsync(Tour tour)
-    {
-        await _context.Tours.AddAsync(tour);
-    }
-
     public async Task<Tour> FindByIdAsync(int id)
     {
         return await _context.Tours.FindAsync(id);
+    }
+
+    public async Task<Tour> FindByPackageId(int packageId)
+    {
+        return await _context.Tours.FirstOrDefaultAsync(t => t.PackageId == packageId);
+    }
+    
+    public async Task AddAsync(Tour tour)
+    {
+        await _context.Tours.AddAsync(tour);
     }
 
     public void Update(Tour tour)

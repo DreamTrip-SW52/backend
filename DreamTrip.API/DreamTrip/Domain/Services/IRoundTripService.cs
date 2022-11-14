@@ -6,6 +6,7 @@ namespace DreamTrip.API.DreamTrip.Domain.Services;
 public interface IRoundTripService
 {
     Task<IEnumerable<RoundTrip>> ListAsync();
+    Task<RoundTrip> FindByPackageIdAsync(int packageId);
     Task<RoundTripResponse> SaveAsync(RoundTrip roundTrip);
     Task<RoundTripResponse> UpdateAsync(int roundTripId, RoundTrip roundTrip);
     Task<RoundTripResponse> DeleteAsync(int roundTripId);

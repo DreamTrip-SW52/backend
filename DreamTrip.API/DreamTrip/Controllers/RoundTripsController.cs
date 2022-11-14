@@ -29,6 +29,15 @@ public class RoundTripsController : ControllerBase
         return resources;
     }
 
+    [HttpGet("packageId/{packageId}")]
+    public async Task<RoundTripResource> GetByPackageId(int packageId)
+    {
+        var roundTrip = await _roundTripService.FindByPackageIdAsync(packageId);
+        var resource = _mapper.Map<RoundTrip, RoundTripResource>(roundTrip);
+
+        return resource;
+    }
+
     [HttpPost]
     public async Task<IActionResult> PostAsync([FromBody] SaveRoundTripResource resource)
     {

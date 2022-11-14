@@ -29,6 +29,15 @@ public class AccommodationController : ControllerBase
         return resources;
     }
 
+    [HttpGet("packageId/{packageId}")]
+    public async Task<AccommodationResource> GetByPackageId(int packageId)
+    {
+        var accommodation = await _accommodationService.FindByPackageIdAsync(packageId);
+        var resource = _mapper.Map<Accommodation, AccommodationResource>(accommodation);
+
+        return resource;
+    }
+
     [HttpPost]
     public async Task<IActionResult> PostAsync([FromBody] SaveAccommodationResource resource)
     {

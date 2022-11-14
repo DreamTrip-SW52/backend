@@ -5,8 +5,8 @@ namespace DreamTrip.API.DreamTrip.Domain.Repositories;
 public interface ITransportRepository
 {
     Task<IEnumerable<Transport>> ListAsync();
-    Task AddAsync(Transport transport);
     Task<Transport> FindByIdAsync(int id);
+    Task AddAsync(Transport transport);
     void Update(Transport transport);
     void Remove(Transport transport);
 }

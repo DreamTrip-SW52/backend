@@ -29,6 +29,16 @@ public class OneWayController : ControllerBase
         return resources;
     }
 
+    [HttpGet("packageId/{packageId}")]
+    public async Task<OneWayResource> GetByPackageId(int packageId)
+    {
+        var oneWay = await _oneWayService.FindByPackageIdAsync(packageId);
+        var resource = _mapper.Map<OneWay, OneWayResource>(oneWay);
+
+        return resource;
+    }
+    
+
     [HttpPost]
     public async Task<IActionResult> PostAsync([FromBody] SaveOneWayResource resource)
     {
