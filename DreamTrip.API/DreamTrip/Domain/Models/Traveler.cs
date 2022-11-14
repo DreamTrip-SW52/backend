@@ -15,6 +15,8 @@ public class Traveler
 
     // Comments
     public List<Review> Reviews { get; set; }
+    // Economic Followings
+    public List<EconomicFollowing> EconomicFollowings { get; set; }
     // Purchased Packages
     public List<PurchasedPackage> PurchasedPackages { get; set; }
     // Traveler Cards

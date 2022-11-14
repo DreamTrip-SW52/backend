@@ -49,5 +49,7 @@ public class ModelToResourceProfile : Profile
         CreateMap<TripBack, TripBackResource>();
         // tripGo
         CreateMap<TripGo, TripGoResource>();
+        // economicFollowing
+        CreateMap<EconomicFollowing, EconomicFollowingResource>();
     }
 }

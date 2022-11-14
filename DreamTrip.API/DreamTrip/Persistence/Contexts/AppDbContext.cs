@@ -28,6 +28,7 @@ namespace DreamTrip.API.DreamTrip.Persistence.Contexts
         public DbSet<Traveler> Travelers { get; set; }
         public DbSet<TripBack> TripsBack { get; set; }
         public DbSet<TripGo> TripsGo { get; set; }
+        public DbSet<EconomicFollowing> EconomicFollowings { get; set; }
 
         public AppDbContext(DbContextOptions options) : base(options)
         {
@@ -447,6 +448,18 @@ namespace DreamTrip.API.DreamTrip.Persistence.Contexts
                 .WithMany(p => p.TripsGo)
                 .HasForeignKey(p => p.LocationId);
 
+            // Economic Following
+            builder.Entity<EconomicFollowing>().ToTable("economic_following");
+            builder.Entity<EconomicFollowing>().HasKey(p => p.Id);
+            builder.Entity<EconomicFollowing>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+            builder.Entity<EconomicFollowing>().Property(p => p.Name).IsRequired();
+            builder.Entity<EconomicFollowing>().Property(p => p.Price).IsRequired();
+            // Relationship (Many to One)
+            builder.Entity<EconomicFollowing>()
+                .HasOne(p => p.Traveler)
+                .WithMany(p => p.EconomicFollowings)
+                .HasForeignKey(p => p.TravelerId);
+            
             // Apply Snake Case Naming Convention
             builder.UseSnakeCaseNamingConvention();
         }

@@ -93,6 +93,9 @@ builder.Services.AddScoped<ITripBackService, TripBackService>();
 // tripGo
 builder.Services.AddScoped<ITripGoRepository, TripGoRepository>();
 builder.Services.AddScoped<ITripGoService, TripGoService>();
+// economicFollowing
+builder.Services.AddScoped<IEconomicFollowingRepository, EconomicFollowingRepository>();
+builder.Services.AddScoped<IEconomicFollowingService, EconomicFollowingService>();
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
