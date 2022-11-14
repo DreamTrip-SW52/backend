@@ -21,9 +21,11 @@ public class RentCarService : IRentCarService
         return await _rentCarRepository.ListAsync();
     }
 
-    public async Task<RentCar> ListByRentCarIdAsync(int rentCarId)
+    public async Task<IEnumerable<RentCar>> FindByFiltersAsync(int priceMin, int priceMax,
+        int capacityMin, int capacityMax, string brand)
     {
-        return await _rentCarRepository.FindByIdAsync(rentCarId);
+        return await _rentCarRepository.FindByFilters(priceMin, priceMax, capacityMin,
+            capacityMax, brand);
     }
 
     public async Task<RentCarResponse> SaveAsync(RentCar rentCar)

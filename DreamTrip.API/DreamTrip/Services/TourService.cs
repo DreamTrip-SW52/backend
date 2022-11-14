@@ -26,6 +26,11 @@ public class TourService : ITourService
         return await _tourRepository.FindByPackageId(packageId);
     }
 
+    public async Task<IEnumerable<Tour>> FindByLocationIdAsync(int locationId)
+    {
+        return await _tourRepository.FindByLocationId(locationId);
+    }
+
     public async Task<TourResponse> SaveAsync(Tour tour)
     {
         try

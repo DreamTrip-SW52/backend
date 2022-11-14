@@ -26,6 +26,12 @@ public class AccommodationRepository : BaseRepository, IAccommodationRepository
         return await  _context.Accommodations.FirstOrDefaultAsync(x => x.PackageId == packageId);
     }
 
+    public async Task<IEnumerable<Accommodation>> FindByFilters(int priceMin, int priceMax)
+    {
+        return await _context.Accommodations
+            .Where(x => x.Price >= priceMin && x.Price <= priceMax).ToListAsync();
+    }
+
     public async Task AddAsync(Accommodation accommodation)
     {
         await _context.Accommodations.AddAsync(accommodation);

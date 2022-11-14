@@ -28,6 +28,15 @@ public class RentCarsController : ControllerBase
 
         return resources;
     }
+    
+    [HttpGet ("filters/{priceMin}/{priceMax}/{capacityMin}/{capacityMax}/{brand}")]
+    public async Task<IEnumerable<RentCarResource>> GetFilteredAsync(int priceMin, int priceMax, int capacityMin, int capacityMax, string brand)
+    {
+        var rentCars = await _rentCarService.FindByFiltersAsync(priceMin, priceMax, capacityMin, capacityMax, brand);
+        var resources = _mapper.Map<IEnumerable<RentCar>, IEnumerable<RentCarResource>>(rentCars);
+
+        return resources;
+    }
 
     [HttpPost]
     public async Task<IActionResult> PostAsync([FromBody] SaveRentCarResource resource)

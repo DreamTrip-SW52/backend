@@ -26,6 +26,17 @@ public class OneWayRepository : BaseRepository, IOneWayRepository
         return await _context.OneWays.FirstOrDefaultAsync(ow => ow.PackageId == packageId);
     }
     
+    public async Task<IEnumerable<OneWay>> FindByFilters(string to, 
+        DateTime departureDate, DateTime returnDate, string transportClass, string transportType)
+    {
+        return await _context.OneWays.
+            Where(ow => ow.TripGo.Location.Department == to &&
+                        (ow.DepartureDate.Date.CompareTo(departureDate.Date) <= 0) &&
+                        (ow.ReturnDate.Date.CompareTo(returnDate.Date) >= 0) &&
+                        ow.TransportClass.Name == transportClass &&
+                        ow.Transport.Type == transportType).ToListAsync();
+    }
+    
     public async Task AddAsync(OneWay oneWay)
     {
         await _context.OneWays.AddAsync(oneWay);

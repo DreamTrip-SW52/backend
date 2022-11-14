@@ -37,7 +37,18 @@ public class OneWayController : ControllerBase
 
         return resource;
     }
-    
+
+    [HttpGet("filters/{to}/{departureDate}/{returnDate}/{transportClass}/{transportType}")]
+    public async Task<IEnumerable<OneWayResource>> FilterOneWay(string to,
+        DateTime departureDate, DateTime returnDate, string transportClass,
+        string transportType)
+    {
+        var oneWays = await _oneWayService.FindByFiltersAsync(to, departureDate,
+            returnDate, transportClass, transportType);
+        var resources = _mapper.Map<IEnumerable<OneWay>, IEnumerable<OneWayResource>>(oneWays);
+
+        return resources;
+    }
 
     [HttpPost]
     public async Task<IActionResult> PostAsync([FromBody] SaveOneWayResource resource)

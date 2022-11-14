@@ -7,6 +7,7 @@ public interface IAccommodationService
 {
     Task<IEnumerable<Accommodation>> ListAsync();
     Task<Accommodation> FindByPackageIdAsync(int packageId);
+    Task<IEnumerable<Accommodation>> FindByFilters(int priceMin, int priceMax);
     Task<AccommodationResponse> SaveAsync(Accommodation accommodation);
     Task<AccommodationResponse> UpdateAsync(int accommodationId, Accommodation accommodation);
     Task<AccommodationResponse> DeleteAsync(int accommodationId);

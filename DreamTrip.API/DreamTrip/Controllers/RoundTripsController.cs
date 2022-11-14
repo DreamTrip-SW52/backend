@@ -37,6 +37,19 @@ public class RoundTripsController : ControllerBase
 
         return resource;
     }
+    
+    [HttpGet("filters/{from}/{to}/{departureDate}/{returnDate}/{transportClass}/{transportType}")]
+    public async Task<IEnumerable<RoundTripResource>> FilterRoundTrip(string from, string to,
+        DateTime departureDate, DateTime returnDate, string transportClass,
+        string transportType)
+    {
+        var roundTrips = await _roundTripService.
+            FindByFiltersAsync(from, to, departureDate,
+            returnDate, transportClass, transportType);
+        var resources = _mapper.Map<IEnumerable<RoundTrip>, IEnumerable<RoundTripResource>>(roundTrips);
+
+        return resources;
+    }
 
     [HttpPost]
     public async Task<IActionResult> PostAsync([FromBody] SaveRoundTripResource resource)

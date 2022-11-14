@@ -25,7 +25,12 @@ public class TourRepository : BaseRepository, ITourRepository
     {
         return await _context.Tours.FirstOrDefaultAsync(t => t.PackageId == packageId);
     }
-    
+
+    public async Task<IEnumerable<Tour>> FindByLocationId(int locationId)
+    {
+        return await _context.Tours.Where(t => t.Package.LocationId == locationId).ToListAsync();
+    }
+
     public async Task AddAsync(Tour tour)
     {
         await _context.Tours.AddAsync(tour);

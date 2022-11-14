@@ -37,6 +37,15 @@ public class ToursController : ControllerBase
 
         return resource;
     }
+    
+    [HttpGet("locationId/{locationId}")]
+    public async Task<IEnumerable<TourResource>> GetByLocationId(int locationId)
+    {
+        var tours = await _tourService.FindByLocationIdAsync(locationId);
+        var resources = _mapper.Map<IEnumerable<Tour>, IEnumerable<TourResource>>(tours);
+
+        return resources;
+    }
 
     [HttpPost]
     public async Task<IActionResult> PostAsync([FromBody] SaveTourResource resource)

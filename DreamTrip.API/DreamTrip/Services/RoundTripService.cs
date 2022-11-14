@@ -25,6 +25,14 @@ public class RoundTripService : IRoundTripService
     {
         return await _roundTripRepository.FindByPackageId(packageId);
     }
+    
+    public async Task<IEnumerable<RoundTrip>> FindByFiltersAsync(string from, string to,
+        DateTime departureDate, DateTime returnDate, string transportClass,
+        string transportType)
+    {
+        return await _roundTripRepository.FindByFilters(from, to, departureDate, returnDate,
+            transportClass, transportType);
+    }
 
     public async Task<RoundTripResponse> SaveAsync(RoundTrip roundTrip)
     {

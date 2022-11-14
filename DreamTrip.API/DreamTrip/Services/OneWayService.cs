@@ -26,6 +26,13 @@ public class OneWayService : IOneWayService
         return await _oneWayRepository.FindByPackageId(packageId);
     }
 
+    public async Task<IEnumerable<OneWay>> FindByFiltersAsync(string to, DateTime departureDate,
+        DateTime returnDate, string transportClass, string transportType)
+    {
+        return await _oneWayRepository.FindByFilters(to, departureDate, returnDate,
+            transportClass, transportType);
+    }
+
     public async Task<OneWayResponse> SaveAsync(OneWay oneWay)
     {
         try
