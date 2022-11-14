@@ -21,9 +21,9 @@ public class PoliceStationService : IPoliceStationService
         return await _policeStationRepository.ListAsync();
     }
 
-    public async Task<PoliceStation> ListByPoliceStationIdAsync(int policeStationId)
+    public async Task<IEnumerable<PoliceStation>> FindByLocationIdAsync(int policeStationId)
     {
-        return await _policeStationRepository.FindByIdAsync(policeStationId);
+        return await _policeStationRepository.FindByLocationId(policeStationId);
     }
 
     public async Task<PoliceStationResponse> SaveAsync(PoliceStation policeStation)

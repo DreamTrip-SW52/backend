@@ -16,14 +16,19 @@ public class PurchasedPackageRepository : BaseRepository, IPurchasedPackageRepos
         return await _context.PurchasedPackages.ToListAsync();
     }
 
-    public async Task AddAsync(PurchasedPackage purchasedPackage)
-    {
-        await _context.PurchasedPackages.AddAsync(purchasedPackage);
-    }
-
     public async Task<PurchasedPackage> FindByIdAsync(int id)
     {
         return await _context.PurchasedPackages.FindAsync(id);
+    }
+
+    public async Task<PurchasedPackage> FindActive()
+    {
+        return await _context.PurchasedPackages.FirstOrDefaultAsync(x => x.Active == true);
+    }
+    
+    public async Task AddAsync(PurchasedPackage purchasedPackage)
+    {
+        await _context.PurchasedPackages.AddAsync(purchasedPackage);
     }
 
     public void Update(PurchasedPackage purchasedPackage)

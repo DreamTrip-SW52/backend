@@ -5,8 +5,9 @@ namespace DreamTrip.API.DreamTrip.Domain.Repositories;
 public interface IPurchasedPackageRepository
 {
     Task<IEnumerable<PurchasedPackage>> ListAsync();
-    Task AddAsync(PurchasedPackage purchasedPackage);
     Task<PurchasedPackage> FindByIdAsync(int id);
+    Task<PurchasedPackage> FindActive();
+    Task AddAsync(PurchasedPackage purchasedPackage);
     void Update(PurchasedPackage purchasedPackage);
     void Remove(PurchasedPackage purchasedPackage);
 }

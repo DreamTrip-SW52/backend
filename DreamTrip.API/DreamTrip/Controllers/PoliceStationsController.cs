@@ -29,6 +29,15 @@ public class PoliceStationController : ControllerBase
         return resources;
     }
 
+    [HttpGet("locationId/{locationId}")]
+    public async Task<IEnumerable<PoliceStationResource>> GetByLocationId(int locationId)
+    {
+        var policeStation = await _policeStationService.FindByLocationIdAsync(locationId);
+        var resources = _mapper.Map<IEnumerable<PoliceStation>, IEnumerable<PoliceStationResource>>(policeStation);
+
+        return resources;
+    }
+
     [HttpPost]
     public async Task<IActionResult> PostAsync([FromBody] SavePoliceStationResource resource)
     {

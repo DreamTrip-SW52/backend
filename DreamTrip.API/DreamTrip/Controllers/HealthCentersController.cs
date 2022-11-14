@@ -29,6 +29,15 @@ public class HealthCenterController : ControllerBase
         return resources;
     }
 
+    [HttpGet("type/{type}/location/{locationId}")]
+    public async Task<IEnumerable<HealthCenterResource>> GetByTypeAndLocationId(string type, int locationId)
+    {
+        var healthCenters = await _healthCenterService.FindByTypeAndLocationIdAsync(type, locationId);
+        var resources = _mapper.Map<IEnumerable<HealthCenter>, IEnumerable<HealthCenterResource>>(healthCenters);
+
+        return resources;
+    }
+    
     [HttpPost]
     public async Task<IActionResult> PostAsync([FromBody] SaveHealthCenterResource resource)
     {

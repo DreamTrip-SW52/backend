@@ -29,6 +29,15 @@ public class PurchasedPackageController : ControllerBase
         return resources;
     }
 
+    [HttpGet("active")]
+    public async Task<PurchasedPackageResource> GetActive()
+    {
+        var purchasedPackage = await _purchasedPackageService.FindActiveSync();
+        var resource = _mapper.Map<PurchasedPackage, PurchasedPackageResource>(purchasedPackage);
+
+        return resource;
+    }
+    
     [HttpPost]
     public async Task<IActionResult> PostAsync([FromBody] SavePurchasedPackageResource resource)
     {

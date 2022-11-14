@@ -16,14 +16,19 @@ public class PoliceStationRepository : BaseRepository, IPoliceStationRepository
         return await _context.PoliceStations.ToListAsync();
     }
 
-    public async Task AddAsync(PoliceStation policeStation)
-    {
-        await _context.PoliceStations.AddAsync(policeStation);
-    }
-
     public async Task<PoliceStation> FindByIdAsync(int id)
     {
         return await _context.PoliceStations.FindAsync(id);
+    }
+
+    public async Task<IEnumerable<PoliceStation>> FindByLocationId(int locationId)
+    {
+        return await _context.PoliceStations.Where(ps => ps.LocationId == locationId).ToListAsync();
+    }
+    
+    public async Task AddAsync(PoliceStation policeStation)
+    {
+        await _context.PoliceStations.AddAsync(policeStation);
     }
 
     public void Update(PoliceStation policeStation)

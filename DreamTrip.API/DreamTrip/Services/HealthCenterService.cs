@@ -21,9 +21,9 @@ public class HealthCenterService : IHealthCenterService
         return await _healthCenterRepository.ListAsync();
     }
 
-    public async Task<HealthCenter> ListByHealthCenterIdAsync(int healthCenterId)
+    public async Task<IEnumerable<HealthCenter>> FindByTypeAndLocationIdAsync(string type, int locationId)
     {
-        return await _healthCenterRepository.FindByIdAsync(healthCenterId);
+        return await _healthCenterRepository.FindByTypeAndLocationId(type, locationId);
     }
 
     public async Task<HealthCenterResponse> SaveAsync(HealthCenter healthCenter)

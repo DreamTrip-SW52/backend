@@ -16,14 +16,20 @@ public class HealthCenterRepository : BaseRepository, IHealthCenterRepository
         return await _context.HealthCenters.ToListAsync();
     }
 
-    public async Task AddAsync(HealthCenter healthCenter)
-    {
-        await _context.HealthCenters.AddAsync(healthCenter);
-    }
-
     public async Task<HealthCenter> FindByIdAsync(int id)
     {
         return await _context.HealthCenters.FindAsync(id);
+    }
+
+    public async Task<IEnumerable<HealthCenter>> FindByTypeAndLocationId(string type, int locationId)
+    {
+        return await _context.HealthCenters.
+            Where(hc => hc.Type == type && hc.LocationId == locationId).ToListAsync();
+    }
+
+    public async Task AddAsync(HealthCenter healthCenter)
+    {
+        await _context.HealthCenters.AddAsync(healthCenter);
     }
 
     public void Update(HealthCenter healthCenter)

@@ -6,6 +6,7 @@ namespace DreamTrip.API.DreamTrip.Domain.Services;
 public interface IHealthCenterService
 {
     Task<IEnumerable<HealthCenter>> ListAsync();
+    Task<IEnumerable<HealthCenter>> FindByTypeAndLocationIdAsync(string type, int locationId);
     Task<HealthCenterResponse> SaveAsync(HealthCenter healthCenter);
     Task<HealthCenterResponse> UpdateAsync(int healthCenterId, HealthCenter healthCenter);
     Task<HealthCenterResponse> DeleteAsync(int healthCenterId);
