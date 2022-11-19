@@ -6,6 +6,7 @@ public interface IEconomicFollowingRepository
 {
     Task<IEnumerable<EconomicFollowing>> ListAsync();
     Task<EconomicFollowing> FindByIdAsync(int id);
+    Task<IEnumerable<EconomicFollowing>> FindByTravelerId(int travelerId);
     Task AddAsync(EconomicFollowing economicFollowing);
     void Update(EconomicFollowing economicFollowing);
     void Remove(EconomicFollowing economicFollowing);

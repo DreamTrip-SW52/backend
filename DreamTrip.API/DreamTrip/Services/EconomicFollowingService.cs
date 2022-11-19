@@ -20,6 +20,11 @@ public class EconomicFollowingService : IEconomicFollowingService
     {
         return await _economicFollowingRepository.ListAsync();
     }
+
+    public async Task<IEnumerable<EconomicFollowing>> FindByTravelerIdAsync(int travelerId)
+    {
+        return await _economicFollowingRepository.FindByTravelerId(travelerId);
+    }
     
     public async Task<EconomicFollowingResponse> SaveAsync(EconomicFollowing economicFollowing)
     {

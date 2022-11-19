@@ -28,7 +28,16 @@ public class EconomicFollowingsController : ControllerBase
 
         return resources;
     }
-    
+
+    [HttpGet ("travelerId/{travelerId}")]
+    public async Task<IEnumerable<EconomicFollowingResource>> GetByTravelerId(int travelerId)
+    {
+        var economicFollowings = await _economicFollowingService.FindByTravelerIdAsync(travelerId);
+        var resources = _mapper.Map<IEnumerable<EconomicFollowing>, IEnumerable<EconomicFollowingResource>>(economicFollowings);
+
+        return resources;
+    }
+
     [HttpPost]
     public async Task<IActionResult> PostAsync([FromBody] SaveEconomicFollowingResource resource)
     {

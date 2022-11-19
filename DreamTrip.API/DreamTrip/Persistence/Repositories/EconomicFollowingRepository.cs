@@ -20,6 +20,12 @@ public class EconomicFollowingRepository : BaseRepository, IEconomicFollowingRep
     {
         return await _context.EconomicFollowings.FindAsync(id);
     }
+
+    public async Task<IEnumerable<EconomicFollowing>> FindByTravelerId(int travelerId)
+    {
+        return await _context.EconomicFollowings.Where(x => x.TravelerId == travelerId).ToListAsync();        
+    }
+    
     public async Task AddAsync(EconomicFollowing economicFollowings)
     {
         await _context.EconomicFollowings.AddAsync(economicFollowings);
