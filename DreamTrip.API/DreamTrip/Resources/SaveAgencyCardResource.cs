@@ -13,7 +13,7 @@ public class SaveAgencyCardResource
     public string CardNumber { get; set; }
 
     [Required]
-    public DateTime ExpirationDate { get; set; }
+    public string ExpirationDate { get; set; }
 
     [Required]
     public int AgencyId { get; set; }
