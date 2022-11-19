@@ -16,14 +16,19 @@ public class ServicesPerAccommodationRepository : BaseRepository, IServicesPerAc
         return await _context.ServicesPerAccommodations.ToListAsync();
     }
 
-    public async Task AddAsync(ServicesPerAccommodation ServicesPerAccommodation)
-    {
-        await _context.ServicesPerAccommodations.AddAsync(ServicesPerAccommodation);
-    }
-
     public async Task<ServicesPerAccommodation> FindByIdAsync(int id)
     {
         return await _context.ServicesPerAccommodations.FindAsync(id);
+    }
+    
+    public async Task<IEnumerable<ServicesPerAccommodation>> FindByAccommodationId(int id)
+    {
+        return await _context.ServicesPerAccommodations.Where(x => x.AccommodationId == id).ToListAsync();
+    }
+
+    public async Task AddAsync(ServicesPerAccommodation ServicesPerAccommodation)
+    {
+        await _context.ServicesPerAccommodations.AddAsync(ServicesPerAccommodation);
     }
 
     public void Update(ServicesPerAccommodation ServicesPerAccommodation)

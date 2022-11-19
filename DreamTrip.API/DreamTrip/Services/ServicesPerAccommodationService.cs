@@ -20,6 +20,11 @@ public class ServicesPerAccommodationService : IServicesPerAccommodationService
     {
         return await _servicesPerAccommodationRepository.ListAsync();
     }
+    
+    public async Task<IEnumerable<ServicesPerAccommodation>> FindByAccommodationIdAsync(int accommodationId)
+    {
+        return await _servicesPerAccommodationRepository.FindByAccommodationId(accommodationId);
+    }
 
     public async Task<ServicesPerAccommodation> ListByServicesPerAccommodationIdAsync(int servicesPerAccommodationId)
     {

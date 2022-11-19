@@ -28,6 +28,15 @@ public class ServicesPerAccommodationsController : ControllerBase
 
         return resources;
     }
+    
+    [HttpGet ("accommodationId/{accommodationId}")]
+    public async Task<IEnumerable<ServicesPerAccommodationResource>> GetByAccommodationIdAsync(int accommodationId)
+    {
+        var servicesPerAccommodations = await _servicesPerAccommodationService.FindByAccommodationIdAsync(accommodationId);
+        var resources = _mapper.Map<IEnumerable<ServicesPerAccommodation>, IEnumerable<ServicesPerAccommodationResource>>(servicesPerAccommodations);
+
+        return resources;
+    }
 
     [HttpPost]
     public async Task<IActionResult> PostAsync([FromBody] SaveServicesPerAccommodationResource resource)
