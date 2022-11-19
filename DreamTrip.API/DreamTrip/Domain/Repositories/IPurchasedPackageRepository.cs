@@ -6,7 +6,7 @@ public interface IPurchasedPackageRepository
 {
     Task<IEnumerable<PurchasedPackage>> ListAsync();
     Task<PurchasedPackage> FindByIdAsync(int id);
-    Task<PurchasedPackage> FindActive();
+    Task<PurchasedPackage> FindActiveByTravelerId(int travelerId);
     Task AddAsync(PurchasedPackage purchasedPackage);
     void Update(PurchasedPackage purchasedPackage);
     void Remove(PurchasedPackage purchasedPackage);

@@ -29,10 +29,10 @@ public class PurchasedPackageController : ControllerBase
         return resources;
     }
 
-    [HttpGet("active")]
-    public async Task<PurchasedPackageResource> GetActive()
+    [HttpGet("active/{travelerId}")]
+    public async Task<PurchasedPackageResource> GetActiveByTravelerId(int travelerId)
     {
-        var purchasedPackage = await _purchasedPackageService.FindActiveSync();
+        var purchasedPackage = await _purchasedPackageService.FindActiveByTravelerIdSync(travelerId);
         var resource = _mapper.Map<PurchasedPackage, PurchasedPackageResource>(purchasedPackage);
 
         return resource;

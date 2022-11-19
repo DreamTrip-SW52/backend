@@ -6,7 +6,7 @@ namespace DreamTrip.API.DreamTrip.Domain.Services;
 public interface IPurchasedPackageService
 {
     Task<IEnumerable<PurchasedPackage>> ListAsync();
-    Task<PurchasedPackage> FindActiveSync();
+    Task<PurchasedPackage> FindActiveByTravelerIdSync(int travelerId);
     Task<PurchasedPackageResponse> SaveAsync(PurchasedPackage purchasedPackage);
     Task<PurchasedPackageResponse> UpdateAsync(int purchasedPackageId, PurchasedPackage purchasedPackage);
     Task<PurchasedPackageResponse> DeleteAsync(int purchasedPackageId);

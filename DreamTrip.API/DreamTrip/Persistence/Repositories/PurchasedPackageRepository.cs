@@ -21,9 +21,9 @@ public class PurchasedPackageRepository : BaseRepository, IPurchasedPackageRepos
         return await _context.PurchasedPackages.FindAsync(id);
     }
 
-    public async Task<PurchasedPackage> FindActive()
+    public async Task<PurchasedPackage> FindActiveByTravelerId(int travelerId)
     {
-        return await _context.PurchasedPackages.FirstOrDefaultAsync(x => x.Active == true);
+        return await _context.PurchasedPackages.FirstOrDefaultAsync(x => x.Active == true && x.Traveler.Id == travelerId);
     }
     
     public async Task AddAsync(PurchasedPackage purchasedPackage)

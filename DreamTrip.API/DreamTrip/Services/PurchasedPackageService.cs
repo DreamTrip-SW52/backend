@@ -21,9 +21,9 @@ public class PurchasedPackageService : IPurchasedPackageService
         return await _purchasedPackageRepository.ListAsync();
     }
 
-    public async Task<PurchasedPackage> FindActiveSync()
+    public async Task<PurchasedPackage> FindActiveByTravelerIdSync(int travelerId)
     {
-        return await _purchasedPackageRepository.FindActive();
+        return await _purchasedPackageRepository.FindActiveByTravelerId(travelerId);
     }
 
     public async Task<PurchasedPackageResponse> SaveAsync(PurchasedPackage purchasedPackage)
