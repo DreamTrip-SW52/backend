@@ -21,7 +21,7 @@ public class TripBackService : ITripBackService
         return await _tripBackRepository.ListAsync();
     }
 
-    public async Task<TripBack> ListByTripBackIdAsync(int tripBackId)
+    public async Task<TripBack> FindByIdAsync(int tripBackId)
     {
         return await _tripBackRepository.FindByIdAsync(tripBackId);
     }

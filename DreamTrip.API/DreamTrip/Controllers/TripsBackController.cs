@@ -28,6 +28,15 @@ public class TripsBackController : ControllerBase
 
         return resources;
     }
+    
+    [HttpGet("{id}")]
+    public async Task<TripBackResource> GetById(int id)
+    {
+        var tripBack = await _tripBackService.FindByIdAsync(id);
+        var resource = _mapper.Map<TripBack, TripBackResource>(tripBack);
+        
+        return resource;
+    }
 
     [HttpPost]
     public async Task<IActionResult> PostAsync([FromBody] SaveTripBackResource resource)

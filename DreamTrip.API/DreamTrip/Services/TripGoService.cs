@@ -21,7 +21,7 @@ public class TripGoService : ITripGoService
         return await _tripGoRepository.ListAsync();
     }
 
-    public async Task<TripGo> ListByTripGoIdAsync(int tripGoId)
+    public async Task<TripGo> FindByIdAsync(int tripGoId)
     {
         return await _tripGoRepository.FindByIdAsync(tripGoId);
     }

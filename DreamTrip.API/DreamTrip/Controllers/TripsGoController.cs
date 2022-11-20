@@ -29,6 +29,15 @@ public class TripsGoController : ControllerBase
         return resources;
     }
 
+    [HttpGet("{id}")]
+    public async Task<TripGoResource> GetById(int id)
+    {
+        var tripGo = await _tripGoService.FindByIdAsync(id);
+        var resource = _mapper.Map<TripGo, TripGoResource>(tripGo);
+        
+        return resource;
+    }
+
     [HttpPost]
     public async Task<IActionResult> PostAsync([FromBody] SaveTripGoResource resource)
     {
