@@ -6,6 +6,7 @@ namespace DreamTrip.API.DreamTrip.Domain.Services;
 public interface IServiceService
 {
     Task<IEnumerable<Service>> ListAsync();
+    Task<Service> FindByIdAsync(int id);
     Task<ServiceResponse> SaveAsync(Service service);
     Task<ServiceResponse> UpdateAsync(int serviceId, Service service);
     Task<ServiceResponse> DeleteAsync(int serviceId);

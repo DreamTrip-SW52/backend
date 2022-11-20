@@ -21,7 +21,7 @@ public class ServiceService : IServiceService
         return await _serviceRepository.ListAsync();
     }
 
-    public async Task<Service> ListByServiceIdAsync(int serviceId)
+    public async Task<Service> FindByIdAsync(int serviceId)
     {
         return await _serviceRepository.FindByIdAsync(serviceId);
     }
