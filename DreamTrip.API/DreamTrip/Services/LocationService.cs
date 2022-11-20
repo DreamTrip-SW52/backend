@@ -20,6 +20,11 @@ public class LocationService : ILocationService
     {
         return await _locationRepository.ListAsync();
     }
+    
+    public async Task<Location> FindByIdAsync(int id)
+    {
+        return await _locationRepository.FindByIdAsync(id);
+    }
 
     public async Task<Location> FindByDepartmentAsync(string department)
     {

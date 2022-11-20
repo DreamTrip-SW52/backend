@@ -7,6 +7,7 @@ public interface ILocationService
 {
     Task<IEnumerable<Location>> ListAsync();
     Task<Location> FindByDepartmentAsync(string department);
+    Task<Location> FindByIdAsync(int id);
     Task<LocationResponse> SaveAsync(Location location);
     Task<LocationResponse> UpdateAsync(int locationId, Location location);
     Task<LocationResponse> DeleteAsync(int locationId);

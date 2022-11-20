@@ -38,6 +38,15 @@ public class LocationController : ControllerBase
         return resource;
     }
 
+    [HttpGet ("{id}")]
+    public async Task<LocationResource> GetById(int id)
+    {
+        var location = await _locationService.FindByIdAsync(id);
+        var resource = _mapper.Map<Location, LocationResource>(location);
+
+        return resource;
+    }
+    
     [HttpPost]
     public async Task<IActionResult> PostAsync([FromBody] SaveLocationResource resource)
     {
