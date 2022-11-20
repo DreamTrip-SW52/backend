@@ -29,6 +29,15 @@ public class TransportsController : ControllerBase
         return resources;
     }
 
+    [HttpGet("{id}")]
+    public async Task<TransportResource> GetById(int id)
+    {
+        var transport = await _transportService.FindByIdAsync(id);
+        var resource = _mapper.Map<Transport, TransportResource>(transport);
+        
+        return resource;
+    }
+
     [HttpPost]
     public async Task<IActionResult> PostAsync([FromBody] SaveTransportResource resource)
     {

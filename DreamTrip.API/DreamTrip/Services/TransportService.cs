@@ -21,7 +21,7 @@ public class TransportService : ITransportService
         return await _transportRepository.ListAsync();
     }
 
-    public async Task<Transport> ListByTransportIdAsync(int transportId)
+    public async Task<Transport> FindByIdAsync(int transportId)
     {
         return await _transportRepository.FindByIdAsync(transportId);
     }
