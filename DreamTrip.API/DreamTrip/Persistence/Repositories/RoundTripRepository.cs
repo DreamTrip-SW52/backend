@@ -33,7 +33,7 @@ public class RoundTripRepository : BaseRepository, IRoundTripRepository
             Where(rt => rt.TripBack.Location.Department == from &&
                         rt.TripGo.Location.Department == to &&
                         (rt.DepartureDate.Date.CompareTo(departureDate.Date) <= 0) &&
-                        (rt.ReturnDate.Date.CompareTo(returnDate.Date) <= 0) &&
+                        (rt.ReturnDate.Date.CompareTo(returnDate.Date) >= 0) &&
                         rt.TransportClass.Name == transportClass &&
                         rt.Transport.Type == transportType).ToListAsync();
     }

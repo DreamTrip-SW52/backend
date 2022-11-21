@@ -1,4 +1,5 @@
-﻿namespace DreamTrip.API.DreamTrip.Resources;
+﻿using DreamTrip.API.DreamTrip.Domain.Models;
+namespace DreamTrip.API.DreamTrip.Resources;
 
 public class RoundTripResource
 {

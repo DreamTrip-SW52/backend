@@ -26,9 +26,9 @@ public class AccommodationService : IAccommodationService
         return await _accommodationRepository.FindByPackageId(packageId);
     }
 
-    public async Task<IEnumerable<Accommodation>> FindByFilters(int priceMin, int priceMax)
+    public async Task<IEnumerable<Accommodation>> FindByFilters(int locationId, int priceMin, int priceMax)
     {
-        return await _accommodationRepository.FindByFilters(priceMin, priceMax);
+        return await _accommodationRepository.FindByFilters(locationId, priceMin, priceMax);
     }
 
     public async Task<AccommodationResponse> SaveAsync(Accommodation accommodation)

@@ -38,10 +38,10 @@ public class AccommodationController : ControllerBase
         return resource;
     }
 
-    [HttpGet("filters/{priceMin}/{priceMax}")]
-    public async Task<IEnumerable<AccommodationResource>> FilterAccomodation(int priceMin, int priceMax)
+    [HttpGet("filters/{locationId}/{priceMin}/{priceMax}")]
+    public async Task<IEnumerable<AccommodationResource>> FilterAccomodation(int locationId, int priceMin, int priceMax)
     {
-        var accommodations = await _accommodationService.FindByFilters(priceMin, priceMax);
+        var accommodations = await _accommodationService.FindByFilters(locationId, priceMin, priceMax);
         var resources = _mapper.Map<IEnumerable<Accommodation>, IEnumerable<AccommodationResource>>(accommodations);
 
         return resources;

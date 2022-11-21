@@ -21,11 +21,12 @@ public class RentCarRepository : BaseRepository, IRentCarRepository
         return await _context.RentCars.FindAsync(id);
     }
 
-    public async Task<IEnumerable<RentCar>> FindByFilters(int priceMin, int priceMax,
+    public async Task<IEnumerable<RentCar>> FindByFilters(int locationId, int priceMin, int priceMax,
         int capacityMin, int capacityMax, string brand)
     {
         return await _context.RentCars.
-            Where(x => x.Price >= priceMin && x.Price <= priceMax &&
+            Where(x => x.Package.LocationId == locationId &&
+                       x.Price >= priceMin && x.Price <= priceMax &&
                        x.Capacity >= capacityMin && x.Capacity <= capacityMax &&
                        x.Brand == brand).ToListAsync();
     }
