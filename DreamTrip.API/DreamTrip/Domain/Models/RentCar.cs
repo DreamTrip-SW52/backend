@@ -17,4 +17,7 @@ public class RentCar
     // Package
     public int PackageId { get; set; }
     public Package Package { get; set; }
+    
+    // Custom package
+    public List<CustomPackage> CustomPackages { get; set; } = new List<CustomPackage>();
 }

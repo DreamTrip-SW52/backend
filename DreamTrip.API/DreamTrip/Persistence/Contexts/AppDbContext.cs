@@ -29,6 +29,7 @@ namespace DreamTrip.API.DreamTrip.Persistence.Contexts
         public DbSet<TripBack> TripsBack { get; set; }
         public DbSet<TripGo> TripsGo { get; set; }
         public DbSet<EconomicFollowing> EconomicFollowings { get; set; }
+        public DbSet<CustomPackage> CustomPackages { get; set; }
 
         public AppDbContext(DbContextOptions options) : base(options)
         {
@@ -58,6 +59,10 @@ namespace DreamTrip.API.DreamTrip.Persistence.Contexts
             // Relationship (One to Many)
             builder.Entity<Accommodation>()
                 .HasMany(p => p.ServicesPerAccommodations)
+                .WithOne(p => p.Accommodation)
+                .HasForeignKey(p => p.AccommodationId);
+            builder.Entity<Accommodation>()
+                .HasMany(p => p.CustomPackages)
                 .WithOne(p => p.Accommodation)
                 .HasForeignKey(p => p.AccommodationId);
 
@@ -102,6 +107,10 @@ namespace DreamTrip.API.DreamTrip.Persistence.Contexts
                 .HasMany(p => p.TripsGo)
                 .WithOne(p => p.Location)
                 .HasForeignKey(p => p.LocationId);
+            builder.Entity<Location>()
+                .HasMany(p => p.CustomPackages)
+                .WithOne(p => p.Location)
+                .HasForeignKey(p => p.LocationId);
 
             // OneWay
             builder.Entity<OneWay>().ToTable("one_way");
@@ -123,11 +132,16 @@ namespace DreamTrip.API.DreamTrip.Persistence.Contexts
                 .HasOne(p => p.TripGo)
                 .WithOne(p => p.OneWay)
                 .HasForeignKey<OneWay>(p => p.TripGoId);
-            // Relationships (Many to One)
+            // Relationship (Many to One)
             builder.Entity<OneWay>()
                 .HasOne(p => p.Transport)
                 .WithMany(p => p.OneWays)
                 .HasForeignKey(p => p.TransportId);
+            // Relationship (One to Many)
+            builder.Entity<OneWay>()
+                .HasMany(p => p.CustomPackages)
+                .WithOne(p => p.OneWay)
+                .HasForeignKey(p => p.OneWayId);
 
             // Package
             builder.Entity<Package>().ToTable("packages");
@@ -140,7 +154,6 @@ namespace DreamTrip.API.DreamTrip.Persistence.Contexts
             builder.Entity<Package>().Property(p => p.Capacity).IsRequired();
             builder.Entity<Package>().Property(p => p.Price).IsRequired();
             builder.Entity<Package>().Property(p => p.Image).IsRequired();
-            builder.Entity<Package>().Property(p => p.Custom).IsRequired();
             // Relationships (One to One)
             builder.Entity<Package>()
                 .HasOne(p => p.RentCar)
@@ -208,6 +221,10 @@ namespace DreamTrip.API.DreamTrip.Persistence.Contexts
                 .HasOne(p => p.Package)
                 .WithMany(p => p.PurchasedPackages)
                 .HasForeignKey(p => p.PackageId);
+            builder.Entity<PurchasedPackage>()
+                .HasOne(p => p.CustomPackage)
+                .WithMany(p => p.PurchasedPackages)
+                .HasForeignKey(p => p.CustomPackageId);
 
             // Rent Car
             builder.Entity<RentCar>().ToTable("rent_cars");
@@ -226,6 +243,11 @@ namespace DreamTrip.API.DreamTrip.Persistence.Contexts
                 .HasOne(p => p.Package)
                 .WithOne(p => p.RentCar)
                 .HasForeignKey<RentCar>(p => p.PackageId);
+            // Relationship (One to Many)
+            builder.Entity<RentCar>()
+                .HasMany(p => p.CustomPackages)
+                .WithOne(p => p.RentCar)
+                .HasForeignKey(p => p.RentCarId);
 
             // Review
             builder.Entity<Review>().ToTable("reviews");
@@ -272,6 +294,11 @@ namespace DreamTrip.API.DreamTrip.Persistence.Contexts
                 .HasOne(p => p.Transport)
                 .WithMany(p => p.RoundTrips)
                 .HasForeignKey(p => p.TransportId);
+            // Relationship (One to Many)
+            builder.Entity<RoundTrip>()
+                .HasMany(p => p.CustomPackages)
+                .WithOne(p => p.RoundTrip)
+                .HasForeignKey(p => p.RoundTripId);
 
             // Service
             builder.Entity<Service>().ToTable("services");
@@ -313,6 +340,11 @@ namespace DreamTrip.API.DreamTrip.Persistence.Contexts
                 .HasOne(p => p.Package)
                 .WithOne(p => p.Tour)
                 .HasForeignKey<Tour>(p => p.PackageId);
+            // Relationship (One to Many)
+            builder.Entity<Tour>()
+                .HasMany(p => p.CustomPackages)
+                .WithOne(p => p.Tour)
+                .HasForeignKey(p => p.TourId);
 
             // Transport
             builder.Entity<Transport>().ToTable("transports");
@@ -411,6 +443,10 @@ namespace DreamTrip.API.DreamTrip.Persistence.Contexts
                 .HasForeignKey(p => p.TravelerId);
             builder.Entity<Traveler>()
                 .HasMany(p => p.TravelerCards)
+                .WithOne(p => p.Traveler)
+                .HasForeignKey(p => p.TravelerId);
+            builder.Entity<Traveler>()
+                .HasMany(p => p.CustomPackages)
                 .WithOne(p => p.Traveler)
                 .HasForeignKey(p => p.TravelerId);
 

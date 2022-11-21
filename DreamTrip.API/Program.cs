@@ -107,6 +107,9 @@ builder.Services.AddScoped<ITripGoService, TripGoService>();
 // economicFollowing
 builder.Services.AddScoped<IEconomicFollowingRepository, EconomicFollowingRepository>();
 builder.Services.AddScoped<IEconomicFollowingService, EconomicFollowingService>();
+// customPackage
+builder.Services.AddScoped<ICustomPackageRepository, CustomPackageRepository>();
+builder.Services.AddScoped<ICustomPackageService, CustomPackageService>();
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 

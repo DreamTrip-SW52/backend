@@ -21,4 +21,7 @@ public class OneWay
     // Transport
     public int TransportId { get; set; }
     public Transport Transport { get; set; }
+    
+    // Custom Packages
+    public List<CustomPackage> CustomPackages { get; set; } = new List<CustomPackage>();
 }

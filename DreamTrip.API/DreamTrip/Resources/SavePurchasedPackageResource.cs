@@ -10,6 +10,7 @@ public class SavePurchasedPackageResource
     [Required]
     public int TravelerId { get; set; }
 
-    [Required]
     public int PackageId { get; set; }
+    
+    public int CustomPackageId { get; set; } 
 }

@@ -15,5 +15,7 @@ public class Accommodation
     public Package Package { get; set; }
     // Services per Accommodation
     public List<ServicesPerAccommodation> ServicesPerAccommodations { get; set; } = new List<ServicesPerAccommodation>();
+    // Custom Packages
+    public List<CustomPackage> CustomPackages { get; set; } = new List<CustomPackage>();
 
 }

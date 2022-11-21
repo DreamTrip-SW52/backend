@@ -12,4 +12,7 @@ public class PurchasedPackage
     // Package
     public int PackageId { get; set; }
     public Package Package { get; set; }
+    // Custom Package
+    public int CustomPackageId { get; set; }
+    public CustomPackage CustomPackage { get; set; }
 }

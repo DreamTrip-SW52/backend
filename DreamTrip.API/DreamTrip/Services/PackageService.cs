@@ -74,7 +74,6 @@ public class PackageService : IPackageService
 		existingPackage.Capacity = package.Capacity;
 		existingPackage.Price = package.Price;
 		existingPackage.Image=  package.Image;
-		existingPackage.Custom = package.Custom;
 		existingPackage.Views = package.Views;
 		existingPackage.Sales = package.Sales;
         existingPackage.Category = package.Category;

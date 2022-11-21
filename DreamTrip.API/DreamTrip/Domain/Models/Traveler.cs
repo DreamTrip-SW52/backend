@@ -21,4 +21,6 @@ public class Traveler
     public List<PurchasedPackage> PurchasedPackages { get; set; }
     // Traveler Cards
     public List<TravelerCard> TravelerCards { get; set; }
+    // Custom Packages
+    public List<CustomPackage> CustomPackages { get; set; }
 }

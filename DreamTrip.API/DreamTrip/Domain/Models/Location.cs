@@ -10,6 +10,8 @@ public class Location
 
     // Packages
     public List<Package> Packages { get; set; } = new List<Package>();
+    // Custom Packages
+    public List<CustomPackage> CustomPackages { get; set; } = new List<CustomPackage>();
     // Police Stations
     public List<PoliceStation> PoliceStations { get; set; } = new List<PoliceStation>();
     // Health Centers

@@ -12,4 +12,7 @@ public class Tour
     // Package
     public int PackageId { get; set; }
     public Package Package { get; set; }
+    
+    // Custom Packages
+    public List<CustomPackage> CustomPackages { get; set; } = new List<CustomPackage>();
 }
