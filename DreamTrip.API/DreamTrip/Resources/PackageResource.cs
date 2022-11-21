@@ -12,7 +12,6 @@ public class PackageResource
     public int Capacity { get; set; }
     public int Price { get; set; }
     public string Image { get; set; }
-    public bool Custom { get; set; }
     public int AgencyId { get; set; }
     public int LocationId { get; set; }
     public int Views { get; set; }

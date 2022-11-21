@@ -28,9 +28,6 @@ public class SavePackageResource
     public string Image { get; set; }
 
     [Required]
-    public bool Custom { get; set; }
-
-    [Required]
     public int Views { get; set; }
 
     [Required]

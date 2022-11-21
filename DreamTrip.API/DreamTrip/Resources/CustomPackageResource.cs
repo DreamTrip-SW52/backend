@@ -11,5 +11,5 @@ public class CustomPackageResource
     public int AccommodationId { get; set; }
     public int TourId { get; set; }
     public int RoundTripId { get; set; }
-    public int OneWayTripId { get; set; }
+    public int OneWayId { get; set; }
 }
