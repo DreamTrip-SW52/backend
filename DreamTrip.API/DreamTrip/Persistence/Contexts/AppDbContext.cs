@@ -496,6 +496,47 @@ namespace DreamTrip.API.DreamTrip.Persistence.Contexts
                 .WithMany(p => p.EconomicFollowings)
                 .HasForeignKey(p => p.TravelerId);
             
+            // Custom Package
+            builder.Entity<CustomPackage>().ToTable("custom_packages");
+            builder.Entity<CustomPackage>().HasKey(p => p.Id);
+            builder.Entity<CustomPackage>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+            builder.Entity<CustomPackage>().Property(p => p.Name).IsRequired().HasMaxLength(50);
+            builder.Entity<CustomPackage>().Property(p => p.Price).IsRequired();
+            // Relationships (Many to One)
+            builder.Entity<CustomPackage>()
+                .HasOne(p => p.Traveler)
+                .WithMany(p => p.CustomPackages)
+                .HasForeignKey(p => p.TravelerId);
+            builder.Entity<CustomPackage>()
+                .HasOne(p => p.Location)
+                .WithMany(p => p.CustomPackages)
+                .HasForeignKey(p => p.LocationId);
+            builder.Entity<CustomPackage>()
+                .HasOne(p => p.RentCar)
+                .WithMany(p => p.CustomPackages)
+                .HasForeignKey(p => p.RentCarId);
+            builder.Entity<CustomPackage>()
+                .HasOne(p => p.Accommodation)
+                .WithMany(p => p.CustomPackages)
+                .HasForeignKey(p => p.AccommodationId);
+            builder.Entity<CustomPackage>()
+                .HasOne(p => p.Tour)
+                .WithMany(p => p.CustomPackages)
+                .HasForeignKey(p => p.TourId);
+            builder.Entity<CustomPackage>()
+                .HasOne(p => p.RoundTrip)
+                .WithMany(p => p.CustomPackages)
+                .HasForeignKey(p => p.RoundTripId);
+            builder.Entity<CustomPackage>()
+                .HasOne(p => p.OneWay)
+                .WithMany(p => p.CustomPackages)
+                .HasForeignKey(p => p.OneWayId);
+            // Relationships (One to Many)
+            builder.Entity<CustomPackage>()
+                .HasMany(p => p.PurchasedPackages)
+                .WithOne(p => p.CustomPackage)
+                .HasForeignKey(p => p.CustomPackageId);
+            
             // Apply Snake Case Naming Convention
             builder.UseSnakeCaseNamingConvention();
         }

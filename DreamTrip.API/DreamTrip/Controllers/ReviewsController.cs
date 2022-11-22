@@ -29,10 +29,11 @@ public class ReviewsController : ControllerBase
         return resources;
     }
     
-    [HttpGet ("travelerId/{travelerId}")]
-    public async Task<ReviewResource> GetByTravelerIdAsync(int travelerId)
+    [HttpGet ("packageId/{packageId}/travelerId/{travelerId}")]
+    public async Task<ReviewResource> GetByTravelerIdAsync(int packageId, int travelerId)
     {
-        var reviews = await _reviewService.FindByTravelerIdAsync(travelerId);
+        var reviews = await _reviewService.FindByPackageIdAndTravelerIdAsync(
+            packageId, travelerId);
         var resource = _mapper.Map<Review, ReviewResource>(reviews);
 
         return resource;

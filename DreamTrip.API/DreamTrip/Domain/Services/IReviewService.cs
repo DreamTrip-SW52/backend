@@ -6,7 +6,7 @@ namespace DreamTrip.API.DreamTrip.Domain.Services;
 public interface IReviewService
 {
     Task<IEnumerable<Review>> ListAsync();
-    Task<Review> FindByTravelerIdAsync(int id);
+    Task<Review> FindByPackageIdAndTravelerIdAsync(int packageId, int travelerId);
     Task<IEnumerable<Review>> FindByPackageIdAsync(int id);
     Task<ReviewResponse> SaveAsync(Review review);
     Task<ReviewResponse> UpdateAsync(int reviewId, Review review);

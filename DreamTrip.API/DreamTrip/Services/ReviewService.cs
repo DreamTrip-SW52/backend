@@ -21,9 +21,9 @@ public class ReviewService : IReviewService
         return await _reviewRepository.ListAsync();
     }
 
-    public async Task<Review> FindByTravelerIdAsync(int travelerId)
+    public async Task<Review> FindByPackageIdAndTravelerIdAsync(int packageId, int travelerId)
     {
-        return await _reviewRepository.FindByTravelerId(travelerId);
+        return await _reviewRepository.FindByPackageIdAndTravelerId(packageId, travelerId);
     }
 
     public async Task<IEnumerable<Review>> FindByPackageIdAsync(int packageId)

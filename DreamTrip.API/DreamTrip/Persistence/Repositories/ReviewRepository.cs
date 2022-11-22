@@ -21,9 +21,10 @@ public class ReviewRepository : BaseRepository, IReviewRepository
         return await _context.Reviews.FindAsync(id);
     }
     
-    public async Task<Review> FindByTravelerId(int travelerId)
+    public async Task<Review> FindByPackageIdAndTravelerId(int packageId, int travelerId)
     {
-        return await _context.Reviews.FirstOrDefaultAsync(r => r.TravelerId == travelerId);
+        return await _context.Reviews.FirstOrDefaultAsync(
+            r => r.TravelerId == travelerId && r.PackageId == packageId);
     }
 
     public async Task<IEnumerable<Review>> FindByPackageId(int packageId)
