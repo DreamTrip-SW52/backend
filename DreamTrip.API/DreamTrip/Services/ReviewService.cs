@@ -10,6 +10,7 @@ public class ReviewService : IReviewService
     private readonly IReviewRepository _reviewRepository;
     private readonly IUnitOfWork _unitOfWork;
 
+
     public ReviewService(IReviewRepository reviewRepository, IUnitOfWork unitOfWork)
     {
         _reviewRepository = reviewRepository;
@@ -43,6 +44,21 @@ public class ReviewService : IReviewService
         {
             return new ReviewResponse($"An error occurred while saving the review: {e.Message}");
         }
+    }
+
+    public bool ValidationReview(int packageId, int travelerId)
+    {
+        var review = _reviewRepository.FindByPackageIdAndTravelerId(packageId, travelerId);
+
+        if(review == null)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+
     }
 
     public async Task<ReviewResponse> UpdateAsync(int reviewId, Review review)

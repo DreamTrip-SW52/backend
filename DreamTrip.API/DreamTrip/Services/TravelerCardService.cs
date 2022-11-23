@@ -39,6 +39,11 @@ public class TravelerCardService : ITravelerCardService
         }
     }
 
+    public bool FindByIdAsync(int travelerCardId)
+    {
+        throw new NotImplementedException();
+    }
+
     public async Task<TravelerCardResponse> UpdateAsync(int travelerCardId, TravelerCard travelerCard)
     {
         var existingTravelerCard = await _travelerCardRepository.FindByIdAsync(travelerCardId);
