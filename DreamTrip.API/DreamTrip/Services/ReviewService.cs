@@ -48,9 +48,11 @@ public class ReviewService : IReviewService
 
     public bool ValidationReview(int packageId, int travelerId)
     {
-        var review = _reviewRepository.FindByPackageIdAndTravelerId(packageId, travelerId);
 
-        if(review == null)
+
+        Task<Review> review = _reviewRepository.FindByPackageIdAndTravelerId(packageId, travelerId);
+
+        if(review.Result == null)
         {
             return false;
         }

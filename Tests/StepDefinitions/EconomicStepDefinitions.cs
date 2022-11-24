@@ -12,14 +12,14 @@ namespace Tests.StepDefinitions
         EconomicFollowingService economicfollowingService;
         
         bool result;
-        int travelerCardId;
+        int Id;
 
         // For additional details on SpecFlow step definitions see https://go.specflow.org/doc-stepdef
 
-        [Given("The user adds new invoices in the following economic aspects section to verify how much he is spending on his trip")]
-        public void GivenUserAddinvoices(int travelerId)
+        [Given("The Economic bills with Id (.*)")]
+        public void GivenUserAddinvoices(int Id)
         {
-
+            this.Id = Id;
             IEconomicFollowingRepository economicfollowingRepository = new MockEconomicRepository();
 
             economicfollowingService = new EconomicFollowingService(economicfollowingRepository, null);
@@ -29,16 +29,14 @@ namespace Tests.StepDefinitions
         [When("When the user enters the invoices in following economic")]
         public void WhenTheUserEnterToAddinvoices()
         {
-            throw new NotImplementedException();
-
-            travelerCardId = 5;
+            result = economicfollowingService.UserEnterToAddinvoices(Id);
         }
 
         [Then("The user add Another bills in following economic")]
-        public void ThenUserAddinvoices(bool Spectecresult)
+        public void ThenUserAddinvoices()
         {
-            Assert.True(Spectecresult, result);
-            
+            Assert.True(result);
+
         }
     }
 

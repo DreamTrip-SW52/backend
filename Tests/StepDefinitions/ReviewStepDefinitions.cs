@@ -13,12 +13,10 @@ namespace Tests.StepDefinitions
         bool result;
         int packageId;
         int travelerId;
-       // For additional details on SpecFlow step definitions see https://go.specflow.org/doc-stepdef
 
-       [Given("The user enters the add review window and does not have a review already done previously")]
-        public void GivenUserAddReview(int packageId, int travelerId)
+       [Given("The user with ID (.*)")]
+        public void GivenTravelerId(int travelerId)
         {
-            this.packageId = packageId;
             this.travelerId = travelerId;
             IReviewRepository reviewRepository = new MockReviewRepository();
 
@@ -26,26 +24,38 @@ namespace Tests.StepDefinitions
 
         }
 
+       [Given("The package (.*)")]
+        public void GivenPackageId(int packageId)
+        {    
+            this.packageId = packageId;
+
+        }
+       
+
         [When("The user enters to add a review and it is verified that he did not write a review previously")]
         public void WhenVerifiedThatHeDidNotWriteReview()
         {
             result = reviewservice.ValidationReview(packageId, travelerId);
 
-            travelerId = 5;
-            packageId = 10;
         }
 
         [Then("The user can add a review")]
-        public void ThenUserCanAddReview(bool Spectecresult)
+        public void ThenTheUserCanAddReview()
         {
-            Assert.Equal(Spectecresult, result);
+            Assert.False(result);
             
+        }
+        [Then("The user can not add a review")]
+        public void ThenTheUserCanNotAddReview()
+        {
+            Assert.True(result);
+
         }
     }
 
     /*[Serializable]
     internal class NotAddReviewException : Exception
-    {
+    {  The user can not add a review
         public NotAddReviewException()
         {
         }

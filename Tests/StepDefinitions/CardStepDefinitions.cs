@@ -12,13 +12,13 @@ namespace Tests.StepDefinitions
         TravelerCardService travelerCardService;
         
         bool result;
-        int travelerCardId;
+        int Id;
 
-        [Given("The user will register his card in the application")]
-        public void GivenUserAddReview(int travelerId)
+        [Given("The traveler card with Id (.*)")]
+        public void GivenUserAddReview(int Id)
         {
-            
-            
+            this.Id = Id;
+
             ITravelerCardRepository travelerCardRepository = new MockCardRepository();
 
             travelerCardService = new TravelerCardService(travelerCardRepository, null);
@@ -28,16 +28,15 @@ namespace Tests.StepDefinitions
         [When("When the user enter to add card")]
         public void WhenTheUserEnterToAddCard()
         {
-            result = travelerCardService.FindByIdAsync(travelerCardId);
+            result = travelerCardService.FindByIdAsync(Id);
 
-            travelerCardId = 5;
         }
 
         [Then("The user registered his card")]
-        public void ThenUserAddCard(bool Spectecresult)
+        public void ThenUserAddCard()
         {
-            Assert.True(Spectecresult, result);
-            
+            Assert.True(result);
+
         }
     }
 

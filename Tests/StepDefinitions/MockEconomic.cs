@@ -23,7 +23,7 @@ namespace Tests.StepDefinitions
 
         public async Task<IEnumerable<EconomicFollowing>> FindByTravelerId(int travelerId)
         {
-            //return await _context.EconomicFollowings.Where(x => x.TravelerId == travelerId).ToListAsync();
+            return null;
         }
 
         public async Task AddAsync(EconomicFollowing economicFollowings)

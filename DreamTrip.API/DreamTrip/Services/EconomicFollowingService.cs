@@ -40,6 +40,11 @@ public class EconomicFollowingService : IEconomicFollowingService
         }
     }
 
+    public bool UserEnterToAddinvoices(int id)
+    {
+        throw new NotImplementedException();
+    }
+
     public async Task<EconomicFollowingResponse> UpdateAsync(int economicFollowingId, EconomicFollowing economicFollowing)
     {
         var existingEconomicFollowing = await _economicFollowingRepository.FindByIdAsync(economicFollowingId);

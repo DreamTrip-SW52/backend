@@ -25,9 +25,9 @@ namespace Tests.StepDefinitions
             throw new NotImplementedException();
         }
 
-        public Task<Review> FindByPackageIdAndTravelerId(int packageId, int travelerId)
+        public async Task<Review> FindByPackageIdAndTravelerId(int packageId, int travelerId)
         {
-            return Task<Review>.Factory.StartNew(() => {
+            return await Task<Review>.Factory.StartNew(() => {
                 List<Review> reviews = new List<Review>();
                 //Crear 1 objeto review
                 Review review = new Review();
@@ -38,7 +38,18 @@ namespace Tests.StepDefinitions
                 Review review2 = new Review();
                 review2.PackageId = packageId;
                 review2.TravelerId = travelerId;
-                return reviews.Contains(review2) ? review2: null;
+                //return reviews.Contains(review2) ? review2: null; reviews.Where(r => r.PackageId == review2.PackageId).ToList();
+                List<Review> filteredReviews = reviews
+                 .Where(r => r.PackageId == review2.PackageId && r.TravelerId == review2.TravelerId)
+                .ToList();
+
+                if(filteredReviews.Count() == 0)
+                {
+                    return null;
+                }
+
+                return filteredReviews.ElementAt(0);
+
             });
         }
 
