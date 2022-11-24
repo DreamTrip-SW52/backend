@@ -8,25 +8,25 @@ public class CustomPackage
     
     // Relationships
     // Traveler
-    public int TravelerId { get; set; }
+    public int? TravelerId { get; set; }
     public Traveler Traveler { get; set; }
     // Location
-    public int LocationId { get; set; }
+    public int? LocationId { get; set; }
     public Location Location { get; set; }
     // Rent Car
-    public int RentCarId { get; set; }
+    public int? RentCarId { get; set; }
     public RentCar RentCar { get; set; }
     // Accommodation
-    public int AccommodationId { get; set; }
+    public int? AccommodationId { get; set; }
     public Accommodation Accommodation { get; set; }
     // Tour
-    public int TourId { get; set; }
+    public int? TourId { get; set; }
     public Tour Tour { get; set; }
     // Round Trip
-    public int RoundTripId { get; set; }
+    public int? RoundTripId { get; set; }
     public RoundTrip RoundTrip { get; set; }
     // One Way
-    public int OneWayId { get; set; }
+    public int? OneWayId { get; set; }
     public OneWay OneWay { get; set; }
     
     // Purchased Packages

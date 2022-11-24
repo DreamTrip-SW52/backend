@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
 
 namespace DreamTrip.API.DreamTrip.Resources;
 
@@ -16,13 +17,18 @@ public class SaveCustomPackageResource
     [Required]
     public int LocationId { get; set; }
     
-    public int RentCarId { get; set; }
+    [AllowNull]
+    public int? RentCarId { get; set; }
     
-    public int AccommodationId { get; set; }
+    [AllowNull]
+    public int? AccommodationId { get; set; }
     
-    public int TourId { get; set; }
+    [AllowNull]
+    public int? TourId { get; set; }
     
-    public int RoundTripId { get; set; }
+    [AllowNull]
+    public int? RoundTripId { get; set; }
     
-    public int OneWayId { get; set; }
+    [AllowNull]
+    public int? OneWayId { get; set; }
 }

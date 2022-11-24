@@ -220,11 +220,13 @@ namespace DreamTrip.API.DreamTrip.Persistence.Contexts
             builder.Entity<PurchasedPackage>()
                 .HasOne(p => p.Package)
                 .WithMany(p => p.PurchasedPackages)
-                .HasForeignKey(p => p.PackageId);
+                .HasForeignKey(p => p.PackageId)
+                .IsRequired(false);
             builder.Entity<PurchasedPackage>()
                 .HasOne(p => p.CustomPackage)
                 .WithMany(p => p.PurchasedPackages)
-                .HasForeignKey(p => p.CustomPackageId);
+                .HasForeignKey(p => p.CustomPackageId)
+                .IsRequired(false);
 
             // Rent Car
             builder.Entity<RentCar>().ToTable("rent_cars");
@@ -495,7 +497,7 @@ namespace DreamTrip.API.DreamTrip.Persistence.Contexts
                 .HasOne(p => p.Traveler)
                 .WithMany(p => p.EconomicFollowings)
                 .HasForeignKey(p => p.TravelerId);
-            
+
             // Custom Package
             builder.Entity<CustomPackage>().ToTable("custom_packages");
             builder.Entity<CustomPackage>().HasKey(p => p.Id);
@@ -514,29 +516,35 @@ namespace DreamTrip.API.DreamTrip.Persistence.Contexts
             builder.Entity<CustomPackage>()
                 .HasOne(p => p.RentCar)
                 .WithMany(p => p.CustomPackages)
-                .HasForeignKey(p => p.RentCarId);
+                .HasForeignKey(p => p.RentCarId)
+                .IsRequired(false);
             builder.Entity<CustomPackage>()
                 .HasOne(p => p.Accommodation)
                 .WithMany(p => p.CustomPackages)
-                .HasForeignKey(p => p.AccommodationId);
+                .HasForeignKey(p => p.AccommodationId)
+                .IsRequired(false);
             builder.Entity<CustomPackage>()
                 .HasOne(p => p.Tour)
                 .WithMany(p => p.CustomPackages)
-                .HasForeignKey(p => p.TourId);
+                .HasForeignKey(p => p.TourId)
+                .IsRequired(false);
             builder.Entity<CustomPackage>()
                 .HasOne(p => p.RoundTrip)
                 .WithMany(p => p.CustomPackages)
-                .HasForeignKey(p => p.RoundTripId);
+                .HasForeignKey(p => p.RoundTripId)
+                .IsRequired(false);
             builder.Entity<CustomPackage>()
                 .HasOne(p => p.OneWay)
                 .WithMany(p => p.CustomPackages)
-                .HasForeignKey(p => p.OneWayId);
+                .HasForeignKey(p => p.OneWayId)
+                .IsRequired(false);
             // Relationships (One to Many)
             builder.Entity<CustomPackage>()
                 .HasMany(p => p.PurchasedPackages)
                 .WithOne(p => p.CustomPackage)
-                .HasForeignKey(p => p.CustomPackageId);
-            
+                .HasForeignKey(p => p.CustomPackageId)
+                .IsRequired(false);
+
             // Apply Snake Case Naming Convention
             builder.UseSnakeCaseNamingConvention();
         }
